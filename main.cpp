@@ -47,7 +47,7 @@ int main(){
                                 break;
                         case 2:
                                 system("clear");
-                                generarNAutomoviles(1);
+                                generarNAutomoviles(3);
                                 break;
                         case 3:
                                 system("clear");
@@ -58,6 +58,9 @@ int main(){
                                 vaciarAlmacen();
                                 break;
                         case 5:
+                                system("clear");
+                                test();
+                                
                                 break;
                         case 6:
                                 break;
