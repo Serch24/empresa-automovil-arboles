@@ -31,117 +31,42 @@ void ListaDoble::vaciar(){
         cabeza=NULL;
         actual=NULL;
         fin=NULL;
-
-
 }
 
-void ListaDoble::insertarNodo(Automovil v, char c)
+void ListaDoble::insertarNodo(Automovil v)
 {
     pnodo aux;
-    char tipoInsercion;
-    tipoInsercion=c;
 
     if(listaVacia()) { // Si la lista está vacía
         aux = new Nodo(v,NULL,NULL);
         fin=cabeza=aux;
-    }
-    else if (tipoInsercion=='f') {//Inserción por el final
-        aux= new Nodo(v,NULL,NULL);
+    }else{
+        aux= new Nodo(v, NULL, NULL);
         aux->anterior=fin;
         fin->siguiente=aux;
         fin=aux;
     }
-    else if (tipoInsercion=='p') {//Inserción por el principio
-        aux= new Nodo(v,NULL,NULL);
-        aux->siguiente=cabeza;
-        cabeza->anterior=aux;
-        cabeza=aux;
-    }
 }
 
-/* void ListaDoble::insertarNodoIntAntes(Automovil v){ */
-/*     pnodo aux; */
-/*     int i = 1; */
+void ListaDoble::ordenarLista(){
+        int cambiado;
+        pnodo tmp = NULL;
+        if(cabeza != NULL){
+                do{
+                        cambiado = 0;
+                        actual = cabeza;
 
-/*     //Siempre se crea el nodo sin imporar */
-/*     //si entra por el else o if :) */
-/*     aux = new Nodo(v,NULL,NULL); */
-/*     if(listaVacia()) { */
-/*         fin=cabeza=aux; */
-/*     }else{ */
-/*         actual=cabeza; */
-/*         while(actual){ */
-/*                 cout << "i = " << i << endl; */
-/*                 cout << "Cantidad de iteraciones: " << i << endl; */
-/*                 // si es mayor que actual entra aquí */
-/*                 if(v.modelo.compare(actual->valor.modelo) >= 0){ */
-/*                         if((v.modelo.compare(actual->valor.modelo) == 0) && (v.color.compare(actual->valor.color) > 0)){ */
-/*                                 aux->anterior = actual; */
-/*                                 aux->siguiente = actual; */
-/*                                 actual->siguiente = aux; */
-/*                                 actual->anterior = aux; */
-/*                                 fin = aux; */
-/*                                 break; */
-/*                         }else if((v.modelo.compare(actual->valor.modelo) == 0) && (v.color.compare(actual->valor.color) < 0)){ */
-/*                                 actual->anterior = aux; */
-/*                                 actual->siguiente = aux; */
-/*                                 aux->siguiente = actual; */
-/*                                 aux->anterior = actual; */
-/*                                 cabeza = aux; */
-/*                                 break; */
-/*                         } */
-/*                         cout << "Pasa aquí if" << endl; */
-/*                         aux->anterior = actual; */
-/*                         aux->siguiente = actual; */
-/*                         actual->siguiente = aux; */
-/*                         actual->anterior = aux; */
-/*                         fin = aux; */
-/*                         break; */
-/*                 }else if(v.modelo.compare(actual->valor.modelo) < 0){ */
-/*                         // si es menor que actual entra aquí */
-/*                         cout << "Pasa aqui al else " << endl; */
-/*                         actual->anterior = aux; */
-/*                         actual->siguiente = aux; */
-/*                         aux->siguiente = actual; */
-/*                         aux->anterior = actual; */
-/*                         cabeza = aux; */
-/*                         break; */
-/*                 } */
-/*                 actual = actual->siguiente; */
-/*                 i++; */
-/*         } */
-/*     } */
-/* } */
-
-
-void ListaDoble::insertarNodoIntAntes(Automovil v){
-
-        pnodo aux;
-        //Siempre se crea el nodo sin imporar
-        //si entra por el else o if :)
-        aux = new Nodo(v,NULL,NULL);
-        if(listaVacia()) {
-                fin=cabeza=aux;
-        }else{
-                while(actual){
-                        // inserta para abajo
-                        if(v.modelo.compare(actual->valor.modelo) > 0){
-                                /* aux->siguiente=actual; */
-                                /* aux->anterior=actual->anterior; */
-                                /* actual->anterior->siguiente=aux; */
-                                /* actual->anterior=aux; */
-
-                        }else{
-                                /* aux->siguiente=actual; */
-                                /* aux->anterior=actual->anterior; */
-                                /* actual->anterior->siguiente=aux; */
-                                /* actual->anterior=aux; */
-                                /* actual = actual->siguiente; */
+                        while(actual->siguiente != tmp){
+                                if(actual->valor.modelo.compare(actual->siguiente->valor.modelo) > 0){
+                                        swap(actual->valor, actual->siguiente->valor);
+                                        cambiado = 1;
+                                }
+                                actual = actual->siguiente;
                         }
-                        actual = actual->siguiente;
-                }
+                        tmp = actual;
+                }while(cambiado);
         }
-
+        
 }
 
 void ListaDoble::borrarNodo(Automovil v,char c)
@@ -194,32 +119,19 @@ void ListaDoble::mostrarLista(int orden)
         while(aux) {
             cout << "" << endl;
             cout << " | " << aux->valor.modelo << setw(5) << " | " << aux->valor.Nbastidor << setw(4) << " | " << aux->valor.color << " | " << aux->valor.zona << setw(7) << " | " << aux->valor.concesionario << setw(12) << " | "  << endl;
-            if(aux == fin){
-                break;
-            }else{
-                    aux = aux->siguiente;
-            }
+            aux = aux->siguiente;
         }
     }
     else {
         esUltimo();
         aux = fin;
         cout << " | " << "modelo" << " | " << "Bastidor" << " | " << "color" << " | " << "zona" << " | " << "concesionario" << endl;
-        if(aux == fin){
+        while(aux) {
             cout << "" << endl;
             cout << " | " << aux->valor.modelo << setw(5) << " | " << aux->valor.Nbastidor << setw(4) << " | " << aux->valor.color << " | " << aux->valor.zona << setw(7) << " | " << aux->valor.concesionario << setw(12) << " | "  << endl;
-        }
-        while(aux != cabeza) {
-            cout << "" << endl;
-            cout << " | " << aux->valor.modelo << setw(5) << " | " << aux->valor.Nbastidor << setw(4) << " | " << aux->valor.color << " | " << aux->valor.zona << setw(7) << " | " << aux->valor.concesionario << setw(12) << " | "  << endl;
-            if(aux == fin){
-                break;
-            }else{
-                    aux = aux->siguiente;
-            }
+            aux = aux->anterior;
         }
     }
-    cout << endl;
 }
 
 bool ListaDoble::listaVacia()

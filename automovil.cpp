@@ -92,14 +92,14 @@ string concesionarioAleatorio_numero(){
     return numRand[1 + rand() % (3 + 1 - 1)];
 }
 
-Automovil generaAutomovil(){    //genera un coche aleatorio
+Automovil generaAutomovil(string ve){    //genera un coche aleatorio
     Automovil v;
     v.color = colorAleatorio();
-    v.modelo = modeloAleatorio();
+    v.modelo = ve;
     v.Nbastidor = bastidorAleatorio();
     v.zona = zonaAleatorio();
     v.concesionario= concesionarioAleatorio_numero();
-    cout << "El modelo es: " << v.modelo  << "y su color es: " << v.color << endl;
+    /* cout << "El modelo es: " << v.modelo  << "y su color es: " << v.color << endl; */
     return v;
  }
 
@@ -111,16 +111,17 @@ void generarNAutomoviles(int cantidad){
                 autoM.Nbastidor = bastidorAleatorio();
                 autoM.zona = zonaAleatorio();
                 autoM.concesionario = concesionarioAleatorio_numero();
-                cout << "El modelo es: " << autoM.modelo <<  " y su color es: " << autoM.color <<endl;
-                almacen.insertarNodo(autoM, 'f');
+                almacen.insertarNodo(autoM);
         }
 }
-void test(){
-        almacen.insertarNodoIntAntes(generaAutomovil());
+
+void ordenar(){
+        almacen.ordenarLista();
 }
 
 void mostrarAlmacen(){
         almacen.mostrarLista(0);
+        /* almacen.mostrarLista(1); */
 }
 
 void vaciarAlmacen(){

@@ -34,8 +34,8 @@ class ListaDoble
     public:
         ListaDoble() {cabeza=actual=fin=NULL; }
         ~ListaDoble();
-        void insertarNodo(Automovil v, char c);
-        void insertarNodoIntAntes(Automovil v);
+        void insertarNodo(Automovil v);
+        void ordenarLista();
         void borrarNodo(Automovil v,char c);
         bool listaVacia();
         void mostrarLista(int);

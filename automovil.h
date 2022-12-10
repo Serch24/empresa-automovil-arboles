@@ -20,7 +20,7 @@ Automovil dameAutomovilVacio (void);
 void generarNAutomoviles(int); 
 void mostrarAlmacen(void);
 void vaciarAlmacen(void);
-void test();
+void ordenar();
 
 char zonaAleatorio();
 string bastidorAleatorio();
@@ -30,7 +30,7 @@ string concesionarioAleatorio_letra();
 string concesionarioAleatorio_numero();
 
 int sacaCocheNS();
-Automovil generaAutomovil(void);
+Automovil generaAutomovil(string ve);
 Automovil generaAutomovil(int);
 int generarTamanoPila();
 
