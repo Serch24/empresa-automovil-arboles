@@ -36,7 +36,7 @@ class ListaDoble
         ~ListaDoble();
         void insertarNodo(Automovil v);
         void ordenarLista();
-        void borrarNodo(Automovil v,char c);
+        void borrarVehiculos(string modelo);
         bool listaVacia();
         void mostrarLista(int);
         void esSiguiente();

@@ -60,6 +60,11 @@ void ListaDoble::ordenarLista(){
                                 if(actual->valor.modelo.compare(actual->siguiente->valor.modelo) > 0){
                                         swap(actual->valor, actual->siguiente->valor);
                                         cambiado = 1;
+                                }else if(actual->valor.modelo.compare(actual->siguiente->valor.modelo) == 0){
+                                        if(actual->valor.color.compare(actual->siguiente->valor.color) > 0){
+                                                swap(actual->valor, actual->siguiente->valor);
+                                                cambiado = 1;
+                                        }
                                 }
                                 actual = actual->siguiente;
                         }
@@ -69,43 +74,32 @@ void ListaDoble::ordenarLista(){
         
 }
 
-void ListaDoble::borrarNodo(Automovil v,char c)
-{
-    char tipoBorrado;
-    tipoBorrado=c;
+void ListaDoble::borrarVehiculos(string modelo){
+        if(!listaVacia()){
+                actual = cabeza;
+                while(actual){
+                        if(actual->valor.modelo == modelo){
+                                cout << "Son iguales!" << endl;
+                        }
+                        actual = actual->siguiente;
+                }
+        }
 
-    if(tipoBorrado=='f') {//Eliminación por el final
-        pnodo aux=NULL;
-        if((cabeza==fin)) { //Sólo hay elemento
-            aux=fin;
-            cabeza = fin = NULL;
-            aux=NULL;
-            delete aux;
-        }
-        else {
-            aux=fin;
-            fin=fin->anterior;
-            aux->anterior=NULL;  //añado yo según transparencias
-            fin->siguiente=NULL;
-            delete aux;
-        }
-    }
-    else if(tipoBorrado=='p') {//Eliminación por el Principio
-        pnodo aux=NULL;
-        if((cabeza==fin)) {//Sólo hay elemento
-            aux=cabeza;
-            cabeza = fin = NULL;
-            aux=NULL;
-            delete aux;
-        }
-        else {
-            aux=cabeza;
-            cabeza=cabeza->siguiente;
-            aux->siguiente=NULL;  //añado yo según transparencias
-            cabeza->anterior=NULL;
-            delete aux;
-        }
-    }
+
+        /* pnodo aux=NULL; */
+        /* if((cabeza==fin)) {//Sólo hay elemento */
+        /*     aux=cabeza; */
+        /*     cabeza = fin = NULL; */
+        /*     aux=NULL; */
+        /*     delete aux; */
+        /* } */
+        /* else { */
+        /*     aux=cabeza; */
+        /*     cabeza=cabeza->siguiente; */
+        /*     aux->siguiente=NULL;  //añado yo según transparencias */
+        /*     cabeza->anterior=NULL; */
+        /*     delete aux; */
+        /* } */
 }
 
 void ListaDoble::mostrarLista(int orden)

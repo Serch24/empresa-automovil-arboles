@@ -42,23 +42,22 @@ int main(){
                 cout << "Elija una opcion:" << endl;
                 cin >> opcion;
 
+                system("clear");
                 switch(opcion){
                         case 1:
                                 break;
                         case 2:
-                                system("clear");
-                                generarNAutomoviles(6);
+                                generarNAutomoviles(5);
                                 ordenar();
                                 break;
                         case 3:
-                                system("clear");
                                 mostrarAlmacen();
                                 break;
                         case 4:
-                                system("clear");
                                 vaciarAlmacen();
                                 break;
                         case 5:
+                                borrarModelo("BMW");
                                 break;
                         case 6:
                                 break;

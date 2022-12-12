@@ -11,13 +11,12 @@ using namespace std;
 Arbol arbolito;
 ListaDoble almacen;
 
-
 Automovil dameAutomovilVacio(void){     //coche vacio
     Automovil p;
     p.Nbastidor = "";
     p.modelo="";
     p.color="";
-    p.concesionario = "";
+    p.concesionario = 0;
     return p;
 }
 
@@ -50,18 +49,14 @@ string bastidorAleatorio(){     //genera bastidor aleatorio
 
 string modeloAleatorio(){   //genera modelo aleatorio
     int modeloRandom = 0;
-    string nuevoModelo[] = {"Fiat", "AAA", "Seat", "Honda"};
+    string nuevoModelo[] = {"FIAT", "BMW", "SEAT", "HONDA"};
     modeloRandom = rand() % 4;
     return nuevoModelo[modeloRandom];
 }
 
-int sacaCocheNS(){
-    return 6 + rand() %  (12 + 1 - 6);
-}
-
 string  colorAleatorio(){   //genera color aleatorio
     int i = 0;
-    string nuevoColor[] = {"rojo", "negro", "blanco", "azul", "verde", "gris"};
+    string nuevoColor[] = {"ROJO", "NEGRO", "BLANCO", "AZUL", "VERDE", "GRIS"};
 
     i = rand() % 6;
     return nuevoColor[i];
@@ -74,22 +69,8 @@ char zonaAleatorio(){
         return zonas[random];
 }
 
-string concesionarioAleatorio_letra(){      //genera letra aleatoria del concesionario
-    int randomLetra;
-    string nuevoConcesionarioLetra[] = {"A0", "B0", "C0", "D0"};
-    randomLetra = rand() % 4;
-
-    return nuevoConcesionarioLetra[randomLetra];
-}
-
-int generarTamanoPila(){
-    return (6 + rand() % (8 + 1 - 6));
-}
-
-string concesionarioAleatorio_numero(){
-
-    string numRand[] = {"1", "2", "3", "4"};
-    return numRand[1 + rand() % (3 + 1 - 1)];
+int concesionarioAleatorio_numero(){
+    return (rand() % 16 + 1);
 }
 
 Automovil generaAutomovil(string ve){    //genera un coche aleatorio
@@ -121,9 +102,12 @@ void ordenar(){
 
 void mostrarAlmacen(){
         almacen.mostrarLista(0);
-        /* almacen.mostrarLista(1); */
 }
 
 void vaciarAlmacen(){
         almacen.vaciar();
+}
+
+void borrarModelo(string m){
+        almacen.borrarVehiculos(m);
 }

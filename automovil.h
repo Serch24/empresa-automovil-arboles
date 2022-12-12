@@ -11,7 +11,7 @@ struct Automovil
         string modelo ;
         string color;
         char zona;
-        string concesionario;
+        int concesionario;
 };
 
 Automovil leeAutomovil (void);
@@ -27,7 +27,8 @@ string bastidorAleatorio();
 string modeloAleatorio();
 string colorAleatorio();
 string concesionarioAleatorio_letra();
-string concesionarioAleatorio_numero();
+int concesionarioAleatorio_numero();
+void borrarModelo(string m);
 
 int sacaCocheNS();
 Automovil generaAutomovil(string ve);
