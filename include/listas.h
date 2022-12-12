@@ -3,21 +3,21 @@
 
 #include <iostream>
 
-class Nodo
+class NodoArbol
  {
     private:
         int valor;
-        Nodo *siguiente;
+        NodoArbol *siguiente;
         friend class Lista;
 
     public:
-        Nodo(int v, Nodo *sig = NULL)
+        NodoArbol(int v, NodoArbol *sig = NULL)
         {
             valor = v;
             siguiente = sig;
         }
 };
-typedef Nodo *pnodo;
+typedef NodoArbol *pnodoArbol;
 
 class Lista {
     public:
@@ -40,8 +40,8 @@ class Lista {
         int valorActual();
 
     private:
-        pnodo cabeza, fin;
-        pnodo actual;
+        pnodoArbol cabeza, fin;
+        pnodoArbol actual;
 };
 
 #endif // LISTAS_H_INCLUDED

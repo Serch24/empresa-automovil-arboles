@@ -1,5 +1,8 @@
 #include "arbol.h"
 #include "automovil.h"
+#include "concesionario.h"
+
+
 
 
 // Poda: borrar todos los nodos a partir de uno, incluido
@@ -15,30 +18,29 @@ void Arbol::Podar(Nodo* &nodo)
 }
 
 // Insertar un int en el árbol ABB
-/* void Arbol::Insertar(const Automovil dat) */
-/* { */
-/*    Nodo *padre = NULL; */
+void Arbol::Insertar(const concesionario dat){
+    Nodo *padre = NULL;
 
-/*    actual = raiz; */
-/*    // Buscar el int en el árbol, manteniendo un puntero al nodo padre */
-/*    while(!Vacio(actual) && dat != actual->dato) { */
-/*       padre = actual; */
-/*       if(dat > actual->dato) actual = actual->derecho; */
-/*       else if(dat < actual->dato) actual = actual->izquierdo; */
-/*    } */
+    actual = raiz;
+    // Buscar el int en el árbol, manteniendo un puntero al nodo padre
+    while(!Vacio(actual) && dat.numero != actual->dato.numero) {
+       padre = actual;
+       if(dat.numero > actual->dato.numero) actual = actual->derecho;
+       else if(dat.numero < actual->dato.numero) actual = actual->izquierdo;
+    }
 
-/*    // Si se ha encontrado el elemento, regresar sin insertar */
-/*    if(!Vacio(actual)) return; */
-/*    // Si padre es NULL, entonces el árbol estaba vacío, el nuevo nodo será */
-/*    // el nodo raiz */
-/*    if(Vacio(padre)) raiz = new Nodo(dat); */
-/*    // Si el int es menor que el que contiene el nodo padre, lo insertamos */
-/*    // en la rama izquierda */
-/*    else if(dat < padre->dato) padre->izquierdo = new Nodo(dat); */
-/*    // Si el int es mayor que el que contiene el nodo padre, lo insertamos */
-/*    // en la rama derecha */
-/*    else if(dat > padre->dato) padre->derecho = new Nodo(dat); */
-/* } */
+    // Si se ha encontrado el elemento, regresar sin insertar
+    if(!Vacio(actual)) return;
+    // Si padre es NULL, entonces el árbol estaba vacío, el nuevo nodo será
+    // el nodo raiz
+    if(Vacio(padre)) raiz = new Nodo(dat);
+    // Si el int es menor que el que contiene el nodo padre, lo insertamos
+    // en la rama izquierda
+    else if(dat.numero < padre->dato.numero) padre->izquierdo = new Nodo(dat);
+    // Si el int es mayor que el que contiene el nodo padre, lo insertamos
+    // en la rama derecha
+    else if(dat.numero > padre->dato.numero) padre->derecho = new Nodo(dat);
+ }
 
 /* void Arbol::Borrar(const Automovil dat) */
 /* { */
@@ -127,7 +129,7 @@ void Arbol::Podar(Nodo* &nodo)
 // Recorrido de árbol en inorden, aplicamos la función func, que tiene
 // el prototipo:
 // void func(int&);
-void Arbol::InOrden(void (*func)(Automovil&) , Nodo *nodo, bool r)
+void Arbol::InOrden(void (*func)(concesionario&) , Nodo *nodo, bool r)
 {
    if (Vacio(raiz)) return;
    if(r) nodo = raiz;
@@ -139,7 +141,7 @@ void Arbol::InOrden(void (*func)(Automovil&) , Nodo *nodo, bool r)
 // Recorrido de árbol en preorden, aplicamos la función func, que tiene
 // el prototipo:
 // void func(int&);
-void Arbol::PreOrden(void (*func)(Automovil&), Nodo *nodo, bool r)
+void Arbol::PreOrden(void (*func)(concesionario&), Nodo *nodo, bool r)
 {
    if (Vacio(raiz)) return;
    if(r) nodo = raiz;
@@ -151,7 +153,7 @@ void Arbol::PreOrden(void (*func)(Automovil&), Nodo *nodo, bool r)
 // Recorrido de árbol en postorden, aplicamos la función func, que tiene
 // el prototipo:
 // void func(int&);
-void Arbol::PostOrden(void (*func)(Automovil&), Nodo *nodo, bool r)
+void Arbol::PostOrden(void (*func)(concesionario&), Nodo *nodo, bool r)
 {
    if (Vacio(raiz)) return;
    if(r) nodo = raiz;

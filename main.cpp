@@ -63,6 +63,7 @@ int main(){
                                 borrarModelo(entrada);
                                 break;
                         case 6:
+
                                 break;
                         case 7:
                                 break;

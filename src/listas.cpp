@@ -4,7 +4,7 @@ using namespace std;
 
 Lista::~Lista()
 {
-    pnodo aux;
+    pnodoArbol aux;
     while(cabeza)
     {
         aux = cabeza;
@@ -15,30 +15,30 @@ Lista::~Lista()
 }
 
 void Lista::insertarNodoAlInicio(int v) {
-    pnodo aux;
+    pnodoArbol aux;
 
     if (listaVacia())
     {
-        cabeza = new Nodo(v, NULL);
+        cabeza = new NodoArbol(v, NULL);
         fin = cabeza;
     }else{
-            aux = new Nodo(v, NULL);
+            aux = new NodoArbol(v, NULL);
             aux->siguiente = cabeza;
             cabeza = aux;
     }
 }
 
 void Lista::insertarNodoAlFinal(int v) {
-    pnodo aux;
+    pnodoArbol aux;
 
     if (listaVacia())
     {
-        cabeza = new Nodo(v, NULL);
+        cabeza = new NodoArbol(v, NULL);
         fin=cabeza;
     }
     else
     {
-        aux= new Nodo(v,NULL);
+        aux= new NodoArbol(v,NULL);
         fin->siguiente=aux;
         fin=aux;
     }
@@ -46,9 +46,9 @@ void Lista::insertarNodoAlFinal(int v) {
 
 //no entiendo muy bien este método :x
 void Lista::insertarNodoIntermedio(int v, int posicion) {
-    pnodo aux;
+    pnodoArbol aux;
 
-    aux= new Nodo(v,NULL);
+    aux= new NodoArbol(v,NULL);
 
     if (listaVacia())
     {
@@ -73,7 +73,7 @@ void Lista::insertarNodoIntermedio(int v, int posicion) {
 
 void Lista::borrarNodoInicio(){
 
-        pnodo sig;
+        pnodoArbol sig;
         actual = cabeza;
 
         if(actual){
@@ -84,7 +84,7 @@ void Lista::borrarNodoInicio(){
 }
 
 void Lista::borrarNodoFin(){
-        pnodo anterior;
+        pnodoArbol anterior;
         actual = cabeza;
         if(actual){
                 while (actual->siguiente != NULL){
@@ -101,7 +101,7 @@ void Lista::borrarNodoFin(){
 }
 
 void Lista::borrarNodo(int v) {
-    pnodo anterior;
+    pnodoArbol anterior;
 
     actual = cabeza;
 
@@ -128,7 +128,7 @@ void Lista::borrarNodo(int v) {
 // en ese caso funciona, en los demás no.
 void Lista::borrarNodoPosicion(int posicion){
         actual = cabeza;
-        pnodo anterior;
+        pnodoArbol anterior;
         int i = 0;
 
         if(cabeza){
@@ -154,7 +154,7 @@ bool Lista::listaVacia(){
 void Lista::mostrarLista()
 {
     //Nodo *aux;
-    pnodo aux;
+    pnodoArbol aux;
     aux = cabeza;
 
     while(aux)

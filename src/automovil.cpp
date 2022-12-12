@@ -8,7 +8,6 @@
 #include <string>
 
 using namespace std;
-Arbol arbolito;
 ListaDoble almacen;
 
 Automovil dameAutomovilVacio(void){     //coche vacio

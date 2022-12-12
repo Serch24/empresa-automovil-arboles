@@ -36,11 +36,13 @@
 		</Compiler>
 		<Unit filename="include/arbol.h" />
 		<Unit filename="include/automovil.h" />
+		<Unit filename="include/concesionario.h" />
 		<Unit filename="include/listas.h" />
 		<Unit filename="include/listas_dobles.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/arbol.cpp" />
 		<Unit filename="src/automovil.cpp" />
+		<Unit filename="src/concesionario.cpp" />
 		<Unit filename="src/listas.cpp" />
 		<Unit filename="src/listas_dobles.cpp" />
 		<Extensions />

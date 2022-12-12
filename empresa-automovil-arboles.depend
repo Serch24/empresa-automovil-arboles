@@ -42,3 +42,57 @@
 	"automovil.h"
 	<iomanip>
 
+1670873882 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\src\arbol.cpp
+	"arbol.h"
+	"automovil.h"
+	"concesionario.h"
+
+1670873844 c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\include\arbol.h
+	"automovil.h"
+	"concesionario.h"
+	<iostream>
+
+1670837846 c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\include\automovil.h
+	<iostream>
+
+1670872225 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\src\automovil.cpp
+	"automovil.h"
+	"listas_dobles.h"
+	"arbol.h"
+	<stdlib.h>
+	<iostream>
+	<ctime>
+	<string>
+
+1670837916 c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\include\listas_dobles.h
+	<iostream>
+	"automovil.h"
+
+1670874220 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\src\listas.cpp
+	"listas.h"
+
+1670874027 c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\include\listas.h
+	<iostream>
+
+1670847912 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\src\listas_dobles.cpp
+	"listas_dobles.h"
+	"automovil.h"
+	<iomanip>
+
+1670874084 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\src\concesionario.cpp
+	"concesionario.h"
+	"automovil.h"
+	"arbol.h"
+
+1670871770 c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\include\concesionario.h
+	<iostream>
+	"listas.h"
+
+1670872263 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\main.cpp
+	"arbol.h"
+	<cstdlib>
+	<iostream>
+	<iomanip>
+	<stdlib.h>
+	<string.h>
+
