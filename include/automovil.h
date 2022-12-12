@@ -17,7 +17,7 @@ struct Automovil
 Automovil leeAutomovil (void);
 Automovil dameAutomovilVacio (void);
 
-void generarNAutomoviles(int); 
+void generarNAutomoviles(int);
 void mostrarAlmacen(void);
 void vaciarAlmacen(void);
 void ordenar();

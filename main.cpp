@@ -13,7 +13,7 @@ void mostrar(int &a){
 }
 
 void mostrarMenuPrincipal(){
-        string frases[11] = {"Mostrar listado del arbol.", "Generar N cantidad de vehiculos.", "Mostrar datos del almacen.", "Vaciar almacen.", 
+        string frases[11] = {"Mostrar listado del arbol.", "Generar N cantidad de vehiculos.", "Mostrar datos del almacen.", "Vaciar almacen.",
         "Escribe el modelo a eliminar.", "Llevar a almacen por concesionario.", "Llevar a almacen por zona.", "Mostrar vehiculos por consecionario.",
         "Mostrar vehiculos y concesionarios por zona.", "Borrar un concesionario.", "Salir."};
         for(int i = 0; i < 11; i+=2){
@@ -36,18 +36,19 @@ void mostrarMenuPrincipal(){
 
 int main(){
         int opcion;
+        string entrada;
         srand(time(NULL));
         do{
                 mostrarMenuPrincipal();
                 cout << "Elija una opcion:" << endl;
                 cin >> opcion;
 
-                system("clear");
+                //system("cls");
                 switch(opcion){
                         case 1:
                                 break;
                         case 2:
-                                generarNAutomoviles(5);
+                                generarNAutomoviles(3);
                                 ordenar();
                                 break;
                         case 3:
@@ -57,7 +58,9 @@ int main(){
                                 vaciarAlmacen();
                                 break;
                         case 5:
-                                borrarModelo("BMW");
+                            cout << "Escribe algo: " << endl;
+                            cin >> entrada;
+                                borrarModelo(entrada);
                                 break;
                         case 6:
                                 break;

@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1670845139 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\pl2\empresa-automovil-arboles\main.cpp
+	"arbol.h"
+	<cstdlib>
+	<iostream>
+	<iomanip>
+	<stdlib.h>
+	<string.h>
+
+1670837806 c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\pl2\empresa-automovil-arboles\include\arbol.h
+	"automovil.h"
+	<iostream>
+
+1670837846 c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\pl2\empresa-automovil-arboles\include\automovil.h
+	<iostream>
+
+1670837943 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\pl2\empresa-automovil-arboles\src\arbol.cpp
+	"arbol.h"
+	"automovil.h"
+
+1670837823 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\pl2\empresa-automovil-arboles\src\automovil.cpp
+	"automovil.h"
+	"listas_dobles.h"
+	"arbol.h"
+	<stdlib.h>
+	<iostream>
+	<ctime>
+	<string>
+
+1670837916 c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\pl2\empresa-automovil-arboles\include\listas_dobles.h
+	<iostream>
+	"automovil.h"
+
+1670837868 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\pl2\empresa-automovil-arboles\src\listas.cpp
+	"listas.h"
+
+1670837882 c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\pl2\empresa-automovil-arboles\include\listas.h
+	<iostream>
+
+1670847065 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\pl2\empresa-automovil-arboles\src\listas_dobles.cpp
+	"listas_dobles.h"
+	"automovil.h"
+	<iomanip>
+

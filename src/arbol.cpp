@@ -14,13 +14,13 @@ void Arbol::Podar(Nodo* &nodo)
    }
 }
 
-// Insertar un int en el Ã¡rbol ABB
+// Insertar un int en el árbol ABB
 /* void Arbol::Insertar(const Automovil dat) */
 /* { */
 /*    Nodo *padre = NULL; */
 
 /*    actual = raiz; */
-/*    // Buscar el int en el Ã¡rbol, manteniendo un puntero al nodo padre */
+/*    // Buscar el int en el árbol, manteniendo un puntero al nodo padre */
 /*    while(!Vacio(actual) && dat != actual->dato) { */
 /*       padre = actual; */
 /*       if(dat > actual->dato) actual = actual->derecho; */
@@ -29,7 +29,7 @@ void Arbol::Podar(Nodo* &nodo)
 
 /*    // Si se ha encontrado el elemento, regresar sin insertar */
 /*    if(!Vacio(actual)) return; */
-/*    // Si padre es NULL, entonces el Ã¡rbol estaba vacÃ­o, el nuevo nodo serÃ¡ */
+/*    // Si padre es NULL, entonces el árbol estaba vacío, el nuevo nodo será */
 /*    // el nodo raiz */
 /*    if(Vacio(padre)) raiz = new Nodo(dat); */
 /*    // Si el int es menor que el que contiene el nodo padre, lo insertamos */
@@ -47,10 +47,10 @@ void Arbol::Podar(Nodo* &nodo)
 /*    int aux; */
 
 /*    actual = raiz; */
-/*    // Mientras sea posible que el valor estÃ© en el Ã¡rbol */
+/*    // Mientras sea posible que el valor esté en el árbol */
 /*    while(!Vacio(actual)) { */
-/*       if(dat == actual->dato) { // Si el valor estÃ¡ en el nodo actual */
-/*          if(EsHoja(actual)) { // Y si ademÃ¡s es un nodo hoja: lo borramos */
+/*       if(dat == actual->dato) { // Si el valor está en el nodo actual */
+/*          if(EsHoja(actual)) { // Y si además es un nodo hoja: lo borramos */
 /*             cout << "\n\t\tBorrado un nodo hoja,"; */
 /*             if(padre) {// Si tiene padre (no es el nodo raiz) */
 /*                // Anulamos el puntero que le hace referencia */
@@ -65,8 +65,8 @@ void Arbol::Podar(Nodo* &nodo)
 /*             actual = NULL; */
 /*             return; */
 /*          } */
-/*          else { // Si el valor estÃ¡ en el nodo actual, pero no es hoja */
-/*             if (actual->derecho==NULL){ //sÃ³lo tiene hijo izquierdo. */
+/*          else { // Si el valor está en el nodo actual, pero no es hoja */
+/*             if (actual->derecho==NULL){ //sólo tiene hijo izquierdo. */
 /*                 cout << "\n\t\tBorrado un nodo lista izquierda,"; */
 /*                 if (padre){ //Si tiene padre, me lo salto */
 /*                         if(padre->izquierdo==actual) */
@@ -82,7 +82,7 @@ void Arbol::Podar(Nodo* &nodo)
 /*                 actual=NULL; */
 /*                 return; */
 /*             } */
-/*             else  if (actual->izquierdo==NULL){ //sÃ³lo tiene hijo derecho. */
+/*             else  if (actual->izquierdo==NULL){ //sólo tiene hijo derecho. */
 /*                 cout << "\n\t\tBorrado un nodo lista derecha,"; */
 /*                 if (padre){ //Si tiene padre, me lo salto */
 /*                         if(padre->izquierdo==actual) */
@@ -98,15 +98,15 @@ void Arbol::Podar(Nodo* &nodo)
 /*                 actual=NULL; */
 /*                 return; */
 /*             } */
-/*             else{ // Tiene dos hijos. Busco sustituto. Nodo mÃ¡s a la derecha de la rama izquierda */
+/*             else{ // Tiene dos hijos. Busco sustituto. Nodo más a la derecha de la rama izquierda */
 /*                padre=actual; */
 /*                nodo = actual->izquierdo; */
 /*                while(nodo->derecho) { */
 /*                   padre = nodo; */
 /*                   nodo = nodo->derecho; */
 /*                } */
-/*             // Intercambiar valores de nodo a borrar y nodo encontrado y continuar, cerrando el bucle. El nodo encontrado no tiene por quÃ© ser un nodo hoja. */
-/*             // cerrando el bucle nos aseguramos de que sÃ³lo se eliminan nodos hoja. */
+/*             // Intercambiar valores de nodo a borrar y nodo encontrado y continuar, cerrando el bucle. El nodo encontrado no tiene por qué ser un nodo hoja. */
+/*             // cerrando el bucle nos aseguramos de que sólo se eliminan nodos hoja. */
 /*                 aux = actual->dato; */
 /*                 actual->dato = nodo->dato; */
 /*                 nodo->dato = aux; */
@@ -115,7 +115,7 @@ void Arbol::Podar(Nodo* &nodo)
 /*             } */
 /*          } */
 /*       } */
-/*       else { // TodavÃ­a no hemos encontrado el valor, seguir buscÃ¡ndolo */
+/*       else { // Todavía no hemos encontrado el valor, seguir buscándolo */
 /*          padre = actual; */
 /*          if(dat > actual->dato) actual = actual->derecho; */
 /*          else if(dat < actual->dato) actual = actual->izquierdo; */
@@ -124,7 +124,7 @@ void Arbol::Podar(Nodo* &nodo)
 /* } */
 
 
-// Recorrido de Ã¡rbol en inorden, aplicamos la funciÃ³n func, que tiene
+// Recorrido de árbol en inorden, aplicamos la función func, que tiene
 // el prototipo:
 // void func(int&);
 void Arbol::InOrden(void (*func)(Automovil&) , Nodo *nodo, bool r)
@@ -136,7 +136,7 @@ void Arbol::InOrden(void (*func)(Automovil&) , Nodo *nodo, bool r)
    if(nodo->derecho) InOrden(func, nodo->derecho, false);
 }
 
-// Recorrido de Ã¡rbol en preorden, aplicamos la funciÃ³n func, que tiene
+// Recorrido de árbol en preorden, aplicamos la función func, que tiene
 // el prototipo:
 // void func(int&);
 void Arbol::PreOrden(void (*func)(Automovil&), Nodo *nodo, bool r)
@@ -148,7 +148,7 @@ void Arbol::PreOrden(void (*func)(Automovil&), Nodo *nodo, bool r)
    if(nodo->derecho) PreOrden(func, nodo->derecho, false);
 }
 
-// Recorrido de Ã¡rbol en postorden, aplicamos la funciÃ³n func, que tiene
+// Recorrido de árbol en postorden, aplicamos la función func, que tiene
 // el prototipo:
 // void func(int&);
 void Arbol::PostOrden(void (*func)(Automovil&), Nodo *nodo, bool r)
@@ -160,18 +160,18 @@ void Arbol::PostOrden(void (*func)(Automovil&), Nodo *nodo, bool r)
    func(nodo->dato);
 }
 
-// Buscar un valor en el Ã¡rbol
+// Buscar un valor en el árbol
 /* bool Arbol::Buscar(const Automovil dat) */
 /* { */
 /*    actual = raiz; */
 
-/*    // TodavÃ­a puede aparecer, ya que quedan nodos por mirar */
+/*    // Todavía puede aparecer, ya que quedan nodos por mirar */
 /*    while(!Vacio(actual)) { */
 /*       if(dat == actual->dato) return true; // int encontrado */
 /*       else if(dat > actual->dato) actual = actual->derecho; // Seguir */
 /*       else if(dat < actual->dato) actual = actual->izquierdo; */
 /*    } */
-/*    return false; // No estÃ¡ en Ã¡rbol */
+/*    return false; // No está en árbol */
 /* } */
 
 // Calcular la altura del nodo que contiene el int dat
@@ -180,7 +180,7 @@ void Arbol::PostOrden(void (*func)(Automovil&), Nodo *nodo, bool r)
 /*    int altura = 0; */
 /*    actual = raiz; */
 
-/*    // TodavÃ­a puede aparecer, ya que quedan nodos por mirar */
+/*    // Todavía puede aparecer, ya que quedan nodos por mirar */
 /*    while(!Vacio(actual)) { */
 /*       if(dat == actual->dato) return altura; // int encontrado */
 /*       else { */
@@ -189,19 +189,19 @@ void Arbol::PostOrden(void (*func)(Automovil&), Nodo *nodo, bool r)
 /*          else if(dat < actual->dato) actual = actual->izquierdo; */
 /*       } */
 /*    } */
-/*    return -1; // No estÃ¡ en Ã¡rbol */
+/*    return -1; // No está en árbol */
 /* } */
 
-/* // Contar el nÃºmero de nodos */
+/* // Contar el número de nodos */
 /* const int Arbol::NumeroNodos() */
 /* { */
 /*    contador = 0; */
 
-/*    auxContador(raiz); // FUnciÃ³n auxiliar */
+/*    auxContador(raiz); // FUnción auxiliar */
 /*    return contador; */
 /* } */
 
-// FunciÃ³n auxiliar para contar nodos. FunciÃ³n recursiva de recorrido en
+// Función auxiliar para contar nodos. Función recursiva de recorrido en
 //   preorden, el proceso es aumentar el contador
 void Arbol::auxContador(Nodo *nodo)
 {
@@ -211,24 +211,24 @@ void Arbol::auxContador(Nodo *nodo)
    if(nodo->derecho)   auxContador(nodo->derecho);
 }
 
-// Calcular la altura del Ã¡rbol, que es la altura del nodo de mayor altura.
+// Calcular la altura del árbol, que es la altura del nodo de mayor altura.
 const int Arbol::AlturaArbol()
 {
    altura = 0;
 
-   auxAltura(raiz, 0); // FunciÃ³n auxiliar
+   auxAltura(raiz, 0); // Función auxiliar
    return altura;
 }
 
-// FunciÃ³n auxiliar para calcular altura. FunciÃ³n recursiva de recorrido en
-// postorden, el proceso es actualizar la altura sÃ³lo en nodos hojas de mayor
-// altura de la mÃ¡xima actual
+// Función auxiliar para calcular altura. Función recursiva de recorrido en
+// postorden, el proceso es actualizar la altura sólo en nodos hojas de mayor
+// altura de la máxima actual
 void Arbol::auxAltura(Nodo *nodo, int a)
 {
    // Recorrido postorden
    if(nodo->izquierdo) auxAltura(nodo->izquierdo, a+1);
    if(nodo->derecho)   auxAltura(nodo->derecho, a+1);
    // Proceso, si es un nodo hoja, y su altura es mayor que la actual del
-   // Ã¡rbol, actualizamos la altura actual del Ã¡rbol
+   // árbol, actualizamos la altura actual del árbol
    if(EsHoja(nodo) && a > altura) altura = a;
 }
