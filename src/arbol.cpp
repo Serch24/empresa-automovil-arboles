@@ -2,9 +2,6 @@
 #include "automovil.h"
 #include "concesionario.h"
 
-
-
-
 // Poda: borrar todos los nodos a partir de uno, incluido
 void Arbol::Podar(Nodo* &nodo)
 {

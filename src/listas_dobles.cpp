@@ -79,17 +79,13 @@ void ListaDoble::borrarVehiculos(string modelo){
                 actual = cabeza;
                 while(actual){
                         pnodo aux;
-                        cout << "Cabeza i: " << cabeza->valor.modelo << endl;
-                        cout << "Fin i: " <<fin->valor.modelo << endl;
                         if(actual->valor.modelo == modelo){
                                 if(actual == cabeza && fin != actual){
-                                    cout << "entro al actual=cabeza" << endl;
                                     aux = cabeza;
                                     cabeza = cabeza->siguiente;
                                     cabeza->anterior = NULL;
                                     delete aux;
                                 }else if(actual == fin && actual != cabeza){
-                                    cout << "entro al actual=fin" << endl;
                                     aux = fin;
                                     fin = fin->anterior;
                                     fin->siguiente = NULL;
@@ -100,38 +96,16 @@ void ListaDoble::borrarVehiculos(string modelo){
                                      fin=NULL;
                                      break;
                                  }else{
-                                    cout << "entro al else" << endl;
-                                    cout << "......." << endl;
-                                    cout << cabeza->valor.modelo << endl;
-                                    cout << fin->valor.modelo << endl;
-                                    cout << "......." << endl;
                                     aux = actual;
                                     actual->anterior->siguiente = actual->siguiente;
                                     actual->siguiente->anterior = actual->anterior;
-                                    //actual = actual->siguiente;
                                     delete aux;
-                                    //cout << "Son iguales!" << endl;
                                 }
                                 actual = actual->siguiente;
                         }else{
-                            cout << "AJDSHAD" << endl;
                             actual = actual->siguiente;
                         }
                 }
-        /* pnodo aux=NULL; */
-        /* if((cabeza==fin)) {//Sólo hay elemento */
-        /*     aux=cabeza; */
-        /*     cabeza = fin = NULL; */
-        /*     aux=NULL; */
-        /*     delete aux; */
-        /* } */
-        /* else { */
-        /*     aux=cabeza; */
-        /*     cabeza=cabeza->siguiente; */
-        /*     aux->siguiente=NULL;  //añado yo según transparencias */
-        /*     cabeza->anterior=NULL; */
-        /*     delete aux; */
-        /* } */
 }
 
 void ListaDoble::mostrarLista(int orden)

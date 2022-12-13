@@ -13,12 +13,10 @@ class concesionario
         int numero;
         char zona;
         Lista lista;
-        concesionario generarConcesionario();
-        void generar16concesionarios();
-
         concesionario();
         virtual ~concesionario();
 
 };
 
+void aaaa();
 #endif // CONCESIONARIO_H

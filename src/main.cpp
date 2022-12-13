@@ -1,4 +1,5 @@
 #include "arbol.h"
+#include "concesionario.h"
 #include <cstdlib>
 #include <iostream>
 #include <iomanip>
@@ -6,10 +7,12 @@
 #include <string.h>
 
 using namespace std;
+Arbol arbolito;
 
-void mostrar(int &a){
-        cout << "valor: "  << a << endl;
-
+void mostrar(concesionario &a){
+        cout << "Numero de concesionario: "  << a.numero << endl;
+        cout << "Zona de concesionario: "  << a.zona<< endl;
+        cout << " " << endl;
 }
 
 void mostrarMenuPrincipal(){
@@ -34,16 +37,29 @@ void mostrarMenuPrincipal(){
         }
 }
 
+void generar16Concesionarios(){
+        for(int i = 0; i < 16; i++){
+                concesionario a;
+                arbolito.Insertar(a);
+        }
+}
+
 int main(){
         int opcion;
         string entrada;
         srand(time(NULL));
+        generar16Concesionarios();
+        arbolito.InOrden(mostrar);
         do{
                 mostrarMenuPrincipal();
                 cout << "Elija una opcion:" << endl;
                 cin >> opcion;
 
-                //system("cls");
+                #if defined(__linux__)
+                        system("clear");
+                #else
+                        system("cls");
+                #endif
                 switch(opcion){
                         case 1:
                                 break;
@@ -80,3 +96,6 @@ int main(){
 
         return 0;
 }
+
+
+
