@@ -6,11 +6,9 @@
 #include <iostream>
 #include <ctime>
 #include <string>
-#include <vector>
 
 using namespace std;
 ListaDoble almacen;
-vector<int> numerosDeConcesionarios = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
 int cantidadCoches = 16;
 
 Automovil dameAutomovilVacio(void){     //coche vacio
@@ -72,15 +70,7 @@ char zonaAleatorio(){
 
 int concesionarioAleatorio_numero(){
         int numRand = rand() % 17; // 5
-        if(numerosDeConcesionarios.size() >= 0){
-                for(int i=0; i < numerosDeConcesionarios.size();i++){
-                        if(numRand == numerosDeConcesionarios[i]){
-                                numerosDeConcesionarios.erase(2);
-                                return numRand;
-                        }
-                }
-        }
-        return -1;
+        return numRand;
 }
 
 Automovil generaAutomovil(string ve){    //genera un coche aleatorio

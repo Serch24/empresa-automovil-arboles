@@ -56,7 +56,7 @@ int main(){
                 cin >> opcion;
 
                 #if defined(__linux__)
-                        system("clear");
+                        //system("clear");
                 #else
                         system("cls");
                 #endif

@@ -14,6 +14,7 @@ class concesionario
         char zona;
         Lista lista;
         concesionario();
+        int concesionarioAleatorio();
         virtual ~concesionario();
 
 };
