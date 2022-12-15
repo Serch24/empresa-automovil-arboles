@@ -11,15 +11,6 @@ using namespace std;
 ListaDoble almacen;
 int cantidadCoches = 16;
 
-Automovil dameAutomovilVacio(void){     //coche vacio
-    Automovil p;
-    p.Nbastidor = "";
-    p.modelo="";
-    p.color="";
-    p.concesionario = 0;
-    return p;
-}
-
 string bastidorAleatorio(){     //genera bastidor aleatorio
     string numBastidor;
     string letra = "";
@@ -72,17 +63,6 @@ int concesionarioAleatorio_numero(){
         int numRand = 1 + rand() % (16 + 1 - 1); // 5
         return numRand;
 }
-
-Automovil generaAutomovil(string ve){    //genera un coche aleatorio
-    Automovil v;
-    v.color = colorAleatorio();
-    v.modelo = ve;
-    v.Nbastidor = bastidorAleatorio();
-    v.zona = zonaAleatorio();
-    v.concesionario= concesionarioAleatorio_numero();
-    /* cout << "El modelo es: " << v.modelo  << "y su color es: " << v.color << endl; */
-    return v;
- }
 
 void generarNAutomoviles(int cantidad){
         for(int i = 0; i < cantidad; i++){

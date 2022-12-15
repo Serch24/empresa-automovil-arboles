@@ -11,17 +11,16 @@ Arbol arbolito;
 
 void insertarVehiculosEnLista(int num){
     Automovil coche = devolverAuto(num);
+    cout << coche.Nbastidor << endl;
+    cout << "Mostrado!" << endl;
     while(coche.Nbastidor != ""){
         arbolito.insertarVehiculosEnListaArbol(num, coche);
         coche = devolverAuto(num);
     }
 }
 
-
 void mostrar(concesionario &a){
-        cout << "Numero de concesionario: "  << a.numero << endl;
-        cout << "Zona de concesionario: "  << a.zona<< endl;
-        cout << " " << endl;
+        a.lista.mostrarLista();
 }
 
 void mostrarMenuPrincipal(){
@@ -58,7 +57,7 @@ int main(){
         string entrada;
         srand(time(NULL));
         generar16Concesionarios();
-        arbolito.InOrden(mostrar);
+        /* arbolito.InOrden(mostrar); */
         do{
                 mostrarMenuPrincipal();
                 cout << "Elija una opcion:" << endl;
@@ -95,6 +94,7 @@ int main(){
                         case 7:
                                 break;
                         case 8:
+                                arbolito.InOrden(mostrar);
                                 break;
                         case 9:
                                 break;

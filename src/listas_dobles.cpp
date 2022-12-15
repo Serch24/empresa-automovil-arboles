@@ -109,9 +109,9 @@ void ListaDoble::borrarVehiculos(string modelo){
 }
 
 Automovil ListaDoble::sacarVehiculos(int numero){
-        if(!listaVacia())
+        Automovil automov;
+        if(!listaVacia()){
                 actual = cabeza;
-                Automovil automov;
                 while(actual){
                         pnodo aux;
                         if(actual->valor.concesionario == numero){
@@ -146,6 +146,8 @@ Automovil ListaDoble::sacarVehiculos(int numero){
                             actual = actual->siguiente;
                         }
                 }
+        }
+        return automov;
 }
 
 

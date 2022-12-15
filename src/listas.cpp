@@ -14,7 +14,7 @@ Lista::~Lista()
     actual = NULL;
 }
 
-void Lista::insertarNodoAlInicio(int v) {
+void Lista::insertarNodoAlInicio(Automovil v) {
     pnodoLista aux;
 
     if (listaVacia())
@@ -45,7 +45,7 @@ void Lista::insertarNodoAlFinal(Automovil v) {
 }
 
 //no entiendo muy bien este método :x
-void Lista::insertarNodoIntermedio(int v, int posicion) {
+void Lista::insertarNodoIntermedio(Automovil v, int posicion) {
     pnodoLista aux;
 
     aux= new NodoLista(v,NULL);
@@ -59,7 +59,7 @@ void Lista::insertarNodoIntermedio(int v, int posicion) {
     {   actual=cabeza;
         while(actual)
         {
-            if (actual->valor != posicion){
+            if (actual->valor.concesionario != posicion){
                     actual = actual->siguiente;
             }else{
                 aux->siguiente=actual->siguiente;
@@ -91,8 +91,8 @@ void Lista::borrarNodoFin(){
                         anterior=actual;
                         actual=actual->siguiente;
                 }
-                cout << "Actual : " << actual->valor << endl;
-                cout << "Anterior : " << anterior->valor << endl;
+                cout << "Actual : " << actual->valor.concesionario << endl;
+                cout << "Anterior : " << anterior->valor.concesionario << endl;
                 anterior->siguiente = NULL;
                 actual->siguiente = NULL;
                 fin = anterior;
@@ -100,13 +100,13 @@ void Lista::borrarNodoFin(){
         delete actual;
 }
 
-void Lista::borrarNodo(int v) {
+void Lista::borrarNodo(Automovil v) {
     pnodoLista anterior;
 
     actual = cabeza;
 
     if(actual){
-        while ((actual->valor!=v) && (actual->siguiente!=NULL)){
+        while ((actual->valor.concesionario != v.concesionario) && (actual->siguiente!=NULL)){
                 anterior=actual;
                 actual=actual->siguiente;
         }
@@ -157,9 +157,10 @@ void Lista::mostrarLista()
     pnodoLista aux;
     aux = cabeza;
 
+    cout <<  "Mostrando lista..." << endl;
     while(aux)
     {
-        cout << aux->valor << "-> ";
+        cout << "Bastidor: " << aux->valor.Nbastidor << ", Modelo: "<<  aux->valor.modelo << ", Concesionario :" << aux->valor.concesionario << endl;
         aux = aux->siguiente;
     }
     cout << endl;
@@ -189,7 +190,7 @@ bool Lista::esActual()
     return actual != NULL;
 }
 
-int Lista::valorActual()
+Automovil Lista::valorActual()
 {
     return actual->valor;
 }

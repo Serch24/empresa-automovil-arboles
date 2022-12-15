@@ -24,13 +24,13 @@ class Lista {
     public:
         Lista(){cabeza = actual = fin= NULL;}
         ~Lista();
-        void insertarNodoAlInicio(int);
+        void insertarNodoAlInicio(Automovil);
         void insertarNodoAlFinal(Automovil);
-        void insertarNodoIntermedio(int, int);
+        void insertarNodoIntermedio(Automovil, int);
         void borrarNodoInicio();
         void borrarNodoFin();
         void borrarNodoPosicion(int);
-        void borrarNodo(int);
+        void borrarNodo(Automovil);
         bool listaVacia();
         void mostrarLista();
         void esSiguiente();
@@ -38,7 +38,7 @@ class Lista {
         void esPrimero();
         void esUltimo();
         bool esActual();
-        int valorActual();
+        Automovil valorActual();
 
     private:
         pnodoLista cabeza, fin;

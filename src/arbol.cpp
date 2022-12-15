@@ -39,12 +39,6 @@ void Arbol::Insertar(const concesionario dat){
     else if(dat.numero > padre->dato.numero) padre->derecho = new Nodo(dat);
  }
 
- void Arbol::InsertarEnLista(Automovil coche){
-     actual = raiz;
-     cout << raiz->dato.numero << "nuhyhyhuj"<< endl;
-
- }
-
 /* void Arbol::Borrar(const Automovil dat) */
 /* { */
 /*    Nodo *padre = NULL; */
@@ -143,21 +137,19 @@ void Arbol::InOrden(void (*func)(concesionario&), Nodo *nodo, bool r)
 
 void Arbol::insertarVehiculosEnListaArbol(int num, Automovil coche, Nodo *nodo, bool r)
 {
-    int a = num;
-    Automovil b = coche;
    if (Vacio(raiz)) return;
    if(r) nodo = raiz;
    if(nodo->izquierdo){
         if(nodo->dato.numero == num){
-            nodo->dato.lista.insertarNodoAlFinal(coche);
+            nodo->dato.lista.insertarNodoAlInicio(coche);
         }
-        InOrden(a, b, nodo->izquierdo, false);
+        insertarVehiculosEnListaArbol(num, coche, nodo->izquierdo, false);
    }
    if(nodo->derecho){
         if(nodo->dato.numero == num){
-            nodo->dato.lista.insertarNodoAlFinal(coche);
+            nodo->dato.lista.insertarNodoAlInicio(coche);
         }
-        InOrden(num, coche, nodo->derecho, false);
+        insertarVehiculosEnListaArbol(num, coche, nodo->derecho, false);
    }
 }
 
