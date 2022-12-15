@@ -35,5 +35,6 @@ Automovil generaAutomovil(string ve);
 Automovil generaAutomovil(int);
 int generarTamanoPila();
 Automovil devolverAuto(int numero);
+Automovil devolverAuto(char zona);
 
 #endif

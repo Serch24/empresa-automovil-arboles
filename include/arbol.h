@@ -56,6 +56,12 @@ class Arbol{
            void PreOrden(void (*func)(concesionario&) , Nodo *nodo=NULL, bool r=true);
            void PostOrden(void (*func)(concesionario&) , Nodo *nodo=NULL, bool r=true);
            void insertarVehiculosEnListaArbol(int num, Automovil coche, Nodo *nodo=NULL, bool r=true);
+           void insertarVehiculosEnListaArbol(char num, Automovil coche, Nodo *nodo=NULL, bool r=true);
+           void mostrarVehiculosEnListaArbol(int num, Nodo *nodo=NULL, bool r=true, bool f=false);
+           void mostrarVehiculosEnListaArbol(char z, Nodo *nodo=NULL, bool r=true, bool f=false);
+
+
+
           private:
            // Funciones auxiliares
            void Podar(Nodo* &);

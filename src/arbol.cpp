@@ -153,6 +153,69 @@ void Arbol::insertarVehiculosEnListaArbol(int num, Automovil coche, Nodo *nodo, 
    }
 }
 
+void Arbol::insertarVehiculosEnListaArbol(char z, Automovil coche, Nodo *nodo, bool r)
+{
+   if (Vacio(raiz)) return;
+   if(r) nodo = raiz;
+   if(nodo->izquierdo){
+        if(nodo->dato.zona == z){
+            nodo->dato.lista.insertarNodoAlInicio(coche);
+        }
+        insertarVehiculosEnListaArbol(z, coche, nodo->izquierdo, false);
+   }
+   if(nodo->derecho){
+        if(nodo->dato.zona == z){
+            nodo->dato.lista.insertarNodoAlInicio(coche);
+        }
+        insertarVehiculosEnListaArbol(z, coche, nodo->derecho, false);
+   }
+}
+
+void Arbol::mostrarVehiculosEnListaArbol(int num, Nodo *nodo, bool r, bool f)
+{
+    if(f) return;
+   if (Vacio(raiz)) return;
+   if(r) nodo = raiz;
+   if(nodo->izquierdo && !f){
+        if(nodo->dato.numero == num){
+            nodo->dato.lista.mostrarLista();
+            mostrarVehiculosEnListaArbol(num, nodo->izquierdo, false, true);
+        }else{
+            mostrarVehiculosEnListaArbol(num, nodo->izquierdo, false, false);
+        }
+   }
+   if(nodo->derecho && !f){
+        if(nodo->dato.numero == num){
+            nodo->dato.lista.mostrarLista();
+            mostrarVehiculosEnListaArbol(num, nodo->izquierdo, false, true);
+        }else{
+            mostrarVehiculosEnListaArbol(num, nodo->derecho, false, false);
+        }
+    }
+}
+
+void Arbol::mostrarVehiculosEnListaArbol(char z, Nodo *nodo, bool r, bool f)
+{
+   if(f) return;
+   if (Vacio(raiz)) return;
+   if(r) nodo = raiz;
+   if(nodo->izquierdo && !f){
+        if(nodo->dato.zona == z){
+            nodo->dato.lista.mostrarLista();
+            mostrarVehiculosEnListaArbol(z, nodo->izquierdo, false, true);
+        }else{
+            mostrarVehiculosEnListaArbol(z, nodo->izquierdo, false, false);
+        }
+   }
+   if(nodo->derecho && !f){
+        if(nodo->dato.zona == z){
+            nodo->dato.lista.mostrarLista();
+            mostrarVehiculosEnListaArbol(z, nodo->izquierdo, false, true);
+        }else{
+            mostrarVehiculosEnListaArbol(z, nodo->derecho, false, false);
+        }
+    }
+}
 // Recorrido de árbol en preorden, aplicamos la función func, que tiene
 // el prototipo:
 // void func(int&);

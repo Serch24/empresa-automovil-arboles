@@ -99,3 +99,60 @@
 	<stdlib.h>
 	<string.h>
 
+1671130100 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\empresa-automovil-arboles\src\automovil.cpp
+	"automovil.h"
+	"listas_dobles.h"
+	"arbol.h"
+	<stdlib.h>
+	<iostream>
+	<ctime>
+	<string>
+
+1671130102 c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\empresa-automovil-arboles\include\automovil.h
+	<iostream>
+
+1671130245 c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\empresa-automovil-arboles\include\listas_dobles.h
+	<iostream>
+	"automovil.h"
+
+1671129968 c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\empresa-automovil-arboles\include\arbol.h
+	"automovil.h"
+	"concesionario.h"
+	<iostream>
+
+1671124701 c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\empresa-automovil-arboles\include\concesionario.h
+	<iostream>
+	"listas.h"
+
+1671124701 c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\empresa-automovil-arboles\include\listas.h
+	"automovil.h"
+	<iostream>
+
+1671124701 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\empresa-automovil-arboles\src\concesionario.cpp
+	"concesionario.h"
+	"automovil.h"
+	"arbol.h"
+	<vector>
+
+1671130245 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\empresa-automovil-arboles\src\listas_dobles.cpp
+	"listas_dobles.h"
+	"automovil.h"
+	<iomanip>
+
+1671129968 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\empresa-automovil-arboles\main.cpp
+	"arbol.h"
+	"concesionario.h"
+	<cstdlib>
+	<iostream>
+	<iomanip>
+	<stdlib.h>
+	<string.h>
+
+1671129968 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\empresa-automovil-arboles\src\arbol.cpp
+	"arbol.h"
+	"automovil.h"
+	"concesionario.h"
+
+1671124701 source:c:\users\maria\documents\uah\tercero\estructuras de datos\practica 2\empresa-automovil-arboles\empresa-automovil-arboles\src\listas.cpp
+	"listas.h"
+

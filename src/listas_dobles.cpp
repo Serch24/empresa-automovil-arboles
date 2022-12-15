@@ -150,6 +150,47 @@ Automovil ListaDoble::sacarVehiculos(int numero){
         return automov;
 }
 
+Automovil ListaDoble::sacarVehiculos(char zona){
+        Automovil automov;
+        if(!listaVacia()){
+                actual = cabeza;
+                while(actual){
+                        pnodo aux;
+                        if(actual->valor.zona == zona){
+                                if(actual == cabeza && fin != actual){
+                                    aux = cabeza;
+                                    cabeza = cabeza->siguiente;
+                                    cabeza->anterior = NULL;
+                                    automov = aux->valor;
+                                    delete aux;
+                                }else if(actual == fin && actual != cabeza){
+                                    aux = fin;
+                                    fin = fin->anterior;
+                                    fin->siguiente = NULL;
+                                    automov = aux->valor;
+                                    delete aux;
+                                 }else if(actual == fin && cabeza == actual){
+                                     automov = actual->valor;
+                                     cabeza=NULL;
+                                     actual=NULL;
+                                     fin=NULL;
+                                     break;
+                                 }else{
+                                    aux = actual;
+                                    actual->anterior->siguiente = actual->siguiente;
+                                    actual->siguiente->anterior = actual->anterior;
+                                    automov = aux->valor;
+                                    delete aux;
+                                }
+                                actual = actual->siguiente;
+                                return automov;
+                        }else{
+                            actual = actual->siguiente;
+                        }
+                }
+        }
+        return automov;
+}
 
 void ListaDoble::mostrarLista(int orden)
 {

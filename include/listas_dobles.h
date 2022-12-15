@@ -47,6 +47,7 @@ class ListaDoble
         bool esActual();
         int valorActual();
         Automovil sacarVehiculos(int numero);
+        Automovil sacarVehiculos(char zona);
 };
 
 #endif // LISTAS_DOBLES_H_INCLUDED

@@ -19,6 +19,16 @@ void insertarVehiculosEnLista(int num){
     }
 }
 
+void insertarVehiculosEnLista(char z){
+    Automovil coche = devolverAuto(z);
+    cout << coche.Nbastidor << endl;
+    cout << "Mostrado!" << endl;
+    while(coche.Nbastidor != ""){
+        arbolito.insertarVehiculosEnListaArbol(z, coche);
+        coche = devolverAuto(z);
+    }
+}
+
 void mostrar(concesionario &a){
         a.lista.mostrarLista();
 }
@@ -53,6 +63,7 @@ void generar16Concesionarios(){
 }
 
 int main(){
+        char z;
         int opcion, num;
         string entrada;
         srand(time(NULL));
@@ -66,7 +77,7 @@ int main(){
                 #if defined(__linux__)
                         system("clear");
                 #else
-                        system("cls");
+                        //system("cls");
                 #endif
                 switch(opcion){
                         case 1:
@@ -92,11 +103,19 @@ int main(){
                             insertarVehiculosEnLista(num);
                                 break;
                         case 7:
+                            cout << "Introduce el numero de concesionario: " <<endl;
+                            cin >> z;
+                            insertarVehiculosEnLista(z);
                                 break;
                         case 8:
-                                arbolito.InOrden(mostrar);
+                            cout << "Introduce el numero de concesionario: " <<endl;
+                            cin >> num;
+                            arbolito.mostrarVehiculosEnListaArbol(num);
                                 break;
                         case 9:
+                            cout << "Introduce la zona: " <<endl;
+                            cin >> z;
+                            arbolito.mostrarVehiculosEnListaArbol(z);
                                 break;
                         case 10:
                                 break;

@@ -88,6 +88,10 @@ Automovil devolverAuto(int numero){
     return almacen.sacarVehiculos(numero);
 }
 
+Automovil devolverAuto(char zona){
+    return almacen.sacarVehiculos(zona);
+}
+
 void vaciarAlmacen(){
         almacen.vaciar();
 }
