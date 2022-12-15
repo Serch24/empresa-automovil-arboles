@@ -69,7 +69,7 @@ char zonaAleatorio(){
 }
 
 int concesionarioAleatorio_numero(){
-        int numRand = rand() % 17; // 5
+        int numRand = 1 + rand() % (16 + 1 - 1); // 5
         return numRand;
 }
 
@@ -102,6 +102,10 @@ void ordenar(){
 
 void mostrarAlmacen(){
         almacen.mostrarLista(0);
+}
+
+Automovil devolverAuto(int numero){
+    return almacen.sacarVehiculos(numero);
 }
 
 void vaciarAlmacen(){

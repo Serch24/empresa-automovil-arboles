@@ -46,6 +46,7 @@ class ListaDoble
         void vaciar();
         bool esActual();
         int valorActual();
+        Automovil sacarVehiculos(int numero);
 };
 
 #endif // LISTAS_DOBLES_H_INCLUDED

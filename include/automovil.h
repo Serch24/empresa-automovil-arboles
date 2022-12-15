@@ -8,7 +8,7 @@ using namespace std;
 struct Automovil
 {
         string Nbastidor;
-        string modelo ;
+        string modelo;
         string color;
         char zona;
         int concesionario;
@@ -34,5 +34,6 @@ int sacaCocheNS();
 Automovil generaAutomovil(string ve);
 Automovil generaAutomovil(int);
 int generarTamanoPila();
+Automovil devolverAuto(int numero);
 
 #endif

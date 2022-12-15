@@ -1,30 +1,31 @@
 #ifndef LISTAS_H_INCLUDED
 #define LISTAS_H_INCLUDED
 
+#include "automovil.h"
 #include <iostream>
 
-class NodoArbol
+class NodoLista
  {
     private:
-        int valor;
-        NodoArbol *siguiente;
+        Automovil valor;
+        NodoLista *siguiente;
         friend class Lista;
 
     public:
-        NodoArbol(int v, NodoArbol *sig = NULL)
+        NodoLista(Automovil v, NodoLista *sig = NULL)
         {
             valor = v;
             siguiente = sig;
         }
 };
-typedef NodoArbol *pnodoArbol;
+typedef NodoLista *pnodoLista;
 
 class Lista {
     public:
         Lista(){cabeza = actual = fin= NULL;}
         ~Lista();
         void insertarNodoAlInicio(int);
-        void insertarNodoAlFinal(int);
+        void insertarNodoAlFinal(Automovil);
         void insertarNodoIntermedio(int, int);
         void borrarNodoInicio();
         void borrarNodoFin();
@@ -40,8 +41,8 @@ class Lista {
         int valorActual();
 
     private:
-        pnodoArbol cabeza, fin;
-        pnodoArbol actual;
+        pnodoLista cabeza, fin;
+        pnodoLista actual;
 };
 
 #endif // LISTAS_H_INCLUDED

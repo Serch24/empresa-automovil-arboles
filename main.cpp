@@ -9,6 +9,15 @@
 using namespace std;
 Arbol arbolito;
 
+void insertarVehiculosEnLista(int num){
+    Automovil coche = devolverAuto(num);
+    while(coche.Nbastidor != ""){
+        arbolito.insertarVehiculosEnListaArbol(num, coche);
+        coche = devolverAuto(num);
+    }
+}
+
+
 void mostrar(concesionario &a){
         cout << "Numero de concesionario: "  << a.numero << endl;
         cout << "Zona de concesionario: "  << a.zona<< endl;
@@ -45,7 +54,7 @@ void generar16Concesionarios(){
 }
 
 int main(){
-        int opcion;
+        int opcion, num;
         string entrada;
         srand(time(NULL));
         generar16Concesionarios();
@@ -56,7 +65,7 @@ int main(){
                 cin >> opcion;
 
                 #if defined(__linux__)
-                        //system("clear");
+                        system("clear");
                 #else
                         system("cls");
                 #endif
@@ -64,7 +73,7 @@ int main(){
                         case 1:
                                 break;
                         case 2:
-                                generarNAutomoviles(3);
+                                generarNAutomoviles(10);
                                 ordenar();
                                 break;
                         case 3:
@@ -79,7 +88,9 @@ int main(){
                                 borrarModelo(entrada);
                                 break;
                         case 6:
-
+                            cout << "Introduce el numero de concesionario: " <<endl;
+                            cin >> num;
+                            insertarVehiculosEnLista(num);
                                 break;
                         case 7:
                                 break;

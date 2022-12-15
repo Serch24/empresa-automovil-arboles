@@ -33,6 +33,7 @@ class Arbol{
            ~Arbol() { Podar(raiz); }
            // Insertar en árbol ordenado:
            void Insertar(const concesionario dat);
+           void InsertarEnLista(Automovil coche);
            // Borrar un elemento del árbol:
            void Borrar(const concesionario dat);
            // Función de búsqueda:
@@ -54,6 +55,7 @@ class Arbol{
            void InOrden(void (*func)(concesionario&) , Nodo *nodo=NULL, bool r=true);
            void PreOrden(void (*func)(concesionario&) , Nodo *nodo=NULL, bool r=true);
            void PostOrden(void (*func)(concesionario&) , Nodo *nodo=NULL, bool r=true);
+           void insertarVehiculosEnListaArbol(int num, Automovil coche, Nodo *nodo=NULL, bool r=true);
           private:
            // Funciones auxiliares
            void Podar(Nodo* &);

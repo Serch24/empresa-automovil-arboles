@@ -39,6 +39,12 @@ void Arbol::Insertar(const concesionario dat){
     else if(dat.numero > padre->dato.numero) padre->derecho = new Nodo(dat);
  }
 
+ void Arbol::InsertarEnLista(Automovil coche){
+     actual = raiz;
+     cout << raiz->dato.numero << "nuhyhyhuj"<< endl;
+
+ }
+
 /* void Arbol::Borrar(const Automovil dat) */
 /* { */
 /*    Nodo *padre = NULL; */
@@ -126,13 +132,33 @@ void Arbol::Insertar(const concesionario dat){
 // Recorrido de árbol en inorden, aplicamos la función func, que tiene
 // el prototipo:
 // void func(int&);
-void Arbol::InOrden(void (*func)(concesionario&) , Nodo *nodo, bool r)
+void Arbol::InOrden(void (*func)(concesionario&), Nodo *nodo, bool r)
 {
    if (Vacio(raiz)) return;
    if(r) nodo = raiz;
    if(nodo->izquierdo) InOrden(func, nodo->izquierdo, false);
    func(nodo->dato);
    if(nodo->derecho) InOrden(func, nodo->derecho, false);
+}
+
+void Arbol::insertarVehiculosEnListaArbol(int num, Automovil coche, Nodo *nodo, bool r)
+{
+    int a = num;
+    Automovil b = coche;
+   if (Vacio(raiz)) return;
+   if(r) nodo = raiz;
+   if(nodo->izquierdo){
+        if(nodo->dato.numero == num){
+            nodo->dato.lista.insertarNodoAlFinal(coche);
+        }
+        InOrden(a, b, nodo->izquierdo, false);
+   }
+   if(nodo->derecho){
+        if(nodo->dato.numero == num){
+            nodo->dato.lista.insertarNodoAlFinal(coche);
+        }
+        InOrden(num, coche, nodo->derecho, false);
+   }
 }
 
 // Recorrido de árbol en preorden, aplicamos la función func, que tiene
