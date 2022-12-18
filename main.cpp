@@ -5,43 +5,55 @@
 #include <iomanip>
 #include <stdlib.h>
 #include <string.h>
+/* Código hecho por María y Serch (◠﹏◠)/
+ * UAH - EPS
+ * 2022
+*/
 
 using namespace std;
 Arbol arbolito;
 
+//Insertar por número de concesionario 
 void insertarVehiculosEnLista(int num){
-    Automovil coche = devolverAuto(num);
-    cout << coche.Nbastidor << endl;
-    cout << "Mostrado!" << endl;
-    while(coche.Nbastidor != ""){
-        arbolito.insertarVehiculosEnListaArbol(num, coche);
-        coche = devolverAuto(num);
-    }
+        if(arbolito.Buscar(num)){
+                Automovil coche = devolverAuto(num);
+                while(coche.Nbastidor != ""){
+                        cout << "bastidor: " << coche.Nbastidor << "Zona: " << coche.zona << ", Modelo: " << coche.modelo << endl;
+                        arbolito.insertarVehiculosEnListaArbol(num, coche);
+                        coche = devolverAuto(num);
+                }
+        }else{
+                cout << "no existe el concesionario" << endl;
+        }
 }
 
+//Insertar por zona
 void insertarVehiculosEnLista(char z){
-    Automovil coche = devolverAuto(z);
-    cout << coche.Nbastidor << endl;
-    cout << "Mostrado!" << endl;
-    while(coche.Nbastidor != ""){
-        arbolito.insertarVehiculosEnListaArbol(z, coche);
-        coche = devolverAuto(z);
-    }
+        if(arbolito.Buscar(z)){
+                Automovil coche = devolverAuto(z);
+                while(coche.Nbastidor != ""){
+                        cout << "bastidor: " << coche.Nbastidor << "Zona: " << coche.zona << ", Modelo: " << coche.modelo << endl;
+                        arbolito.insertarVehiculosEnListaArbol(z, coche);
+                        coche = devolverAuto(z);
+                }
+        }else{
+                cout << "no existe el concesionario" << endl;
+        }
 }
 
 void mostrar(concesionario &a){
-        a.lista.mostrarLista();
+        cout << "Concesionario: " << a.numero << ", zona: " << a.zona << ", Cantidad de vehiculos: " << a.lista.contarVehiculos() << endl; 
 }
 
 void mostrarMenuPrincipal(){
-        string frases[11] = {"Mostrar listado del arbol.", "Generar N cantidad de vehiculos.", "Mostrar datos del almacen.", "Vaciar almacen.",
-        "Escribe el modelo a eliminar.", "Llevar a almacen por concesionario.", "Llevar a almacen por zona.", "Mostrar vehiculos por consecionario.",
-        "Mostrar vehiculos y concesionarios por zona.", "Borrar un concesionario.", "Salir."};
+        string frases[11] = {"Mostrar listado del arbol.", "Generar N cantidad de vehiculos.", "Mostrar almacen.", "Vaciar almacen.",
+"Escribe el modelo a eliminar.", "Llevar a almacen por concesionario.", "Llevar a almacen por zona.", "Mostrar vehiculos por consecionario.",
+"Mostrar vehiculos por zona.", "Borrar un concesionario.", "Salir."};
         for(int i = 0; i < 11; i+=2){
                 if(i != 10){
                         cout << " - - - - - - - - - - - - - - - - - - - - - - - - - - ";
                         cout << setw(60) <<" - - - - - - - - - - - - - - - - - - - - - - - - - - " << endl;
-                        if (i+1 == 9) cout << "| " << i+1 << " |" << setw(37) << frases[i] << setw(3) << "|";
+                        if (i+1 == 9) cout << "| " << i+1 << " |" << setw(45) << frases[i] << setw(3) << "|";
                         else cout << "| " << i+1 << " |" << setw(37) << frases[i] << setw(10) << "|";
                         cout << setw(10) << "| " << i+2 << " |" << setw(37) << frases[i+1] << setw(11) << "|" << endl;
                         cout << " - - - - - - - - - - - - - - - - - - - - - - - - - - ";
@@ -63,13 +75,13 @@ void generar16Concesionarios(){
 }
 
 int main(){
-        char z;
-        int opcion, num;
-        string entrada;
+        int opcion;
         srand(time(NULL));
         generar16Concesionarios();
-        /* arbolito.InOrden(mostrar); */
         do{
+                char z;
+                int num;
+                string entrada;
                 mostrarMenuPrincipal();
                 cout << "Elija una opcion:" << endl;
                 cin >> opcion;
@@ -77,13 +89,18 @@ int main(){
                 #if defined(__linux__)
                         system("clear");
                 #else
-                        //system("cls");
+                        system("cls");
                 #endif
                 switch(opcion){
                         case 1:
+                                arbolito.InOrden(mostrar);
+                                cout << "Altura del arbol: " << arbolito.AlturaArbol() << endl;
+                                cout << "Numero de nodos: " << arbolito.NumeroNodos() << endl;
                                 break;
                         case 2:
-                                generarNAutomoviles(10);
+                            cout << "Introduce el numero de coches a crear: " <<endl;
+                            cin >> num;
+                                generarNAutomoviles(num);
                                 ordenar();
                                 break;
                         case 3:
@@ -103,8 +120,9 @@ int main(){
                             insertarVehiculosEnLista(num);
                                 break;
                         case 7:
-                            cout << "Introduce el numero de concesionario: " <<endl;
+                            cout << "Introduce la zona: " <<endl;
                             cin >> z;
+                            z = z - 32;
                             insertarVehiculosEnLista(z);
                                 break;
                         case 8:
@@ -115,11 +133,13 @@ int main(){
                         case 9:
                             cout << "Introduce la zona: " <<endl;
                             cin >> z;
+                            z = z - 32;
                             arbolito.mostrarVehiculosEnListaArbol(z);
                                 break;
                         case 10:
-                                break;
-                        case 11:
+                                cout << "Introduce el numero de concesionario a borrar: " <<endl;
+                                cin >> num;
+                                arbolito.Borrar(num);
                                 break;
                 }
         }while(opcion != 11);

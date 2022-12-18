@@ -39,89 +39,88 @@ void Arbol::Insertar(const concesionario dat){
     else if(dat.numero > padre->dato.numero) padre->derecho = new Nodo(dat);
  }
 
-/* void Arbol::Borrar(const Automovil dat) */
-/* { */
-/*    Nodo *padre = NULL; */
-/*    Nodo *nodo; */
-/*    int aux; */
+void Arbol::Borrar(const int dat)
+{
+   Nodo *padre = NULL;
+   Nodo *nodo;
+   int aux;
 
-/*    actual = raiz; */
-/*    // Mientras sea posible que el valor esté en el árbol */
-/*    while(!Vacio(actual)) { */
-/*       if(dat == actual->dato) { // Si el valor está en el nodo actual */
-/*          if(EsHoja(actual)) { // Y si además es un nodo hoja: lo borramos */
-/*             cout << "\n\t\tBorrado un nodo hoja,"; */
-/*             if(padre) {// Si tiene padre (no es el nodo raiz) */
-/*                // Anulamos el puntero que le hace referencia */
-/*                if(padre->derecho == actual) padre->derecho = NULL; */
-/*                else if(padre->izquierdo == actual) padre->izquierdo = NULL; */
-/*             } */
-/*             else{ */
-/*                 cout << " que ademas era raiz."; */
-/*                 raiz=NULL; */
-/*             } */
-/*             delete actual; // Borrar el nodo */
-/*             actual = NULL; */
-/*             return; */
-/*          } */
-/*          else { // Si el valor está en el nodo actual, pero no es hoja */
-/*             if (actual->derecho==NULL){ //sólo tiene hijo izquierdo. */
-/*                 cout << "\n\t\tBorrado un nodo lista izquierda,"; */
-/*                 if (padre){ //Si tiene padre, me lo salto */
-/*                         if(padre->izquierdo==actual) */
-/*                             padre->izquierdo=actual->izquierdo; */
-/*                         else */
-/*                             padre->derecho=actual->izquierdo; */
-/*                 } */
-/*                 else{ //Si no tiene padre, su hijo izquierdo es el nuevo raiz; */
-/*                     cout << " que ademas era raiz."; */
-/*                     raiz=actual->izquierdo; */
-/*                 } */
-/*                 delete actual; */
-/*                 actual=NULL; */
-/*                 return; */
-/*             } */
-/*             else  if (actual->izquierdo==NULL){ //sólo tiene hijo derecho. */
-/*                 cout << "\n\t\tBorrado un nodo lista derecha,"; */
-/*                 if (padre){ //Si tiene padre, me lo salto */
-/*                         if(padre->izquierdo==actual) */
-/*                             padre->izquierdo=actual->derecho; */
-/*                         else */
-/*                             padre->derecho=actual->derecho; */
-/*                 } */
-/*                 else{ //Si no tiene padre, su hijo izquierdo es el nuevo raiz; */
-/*                     cout << " que ademas era raiz."; */
-/*                     raiz=actual->derecho; */
-/*                                     } */
-/*                 delete actual; */
-/*                 actual=NULL; */
-/*                 return; */
-/*             } */
-/*             else{ // Tiene dos hijos. Busco sustituto. Nodo más a la derecha de la rama izquierda */
-/*                padre=actual; */
-/*                nodo = actual->izquierdo; */
-/*                while(nodo->derecho) { */
-/*                   padre = nodo; */
-/*                   nodo = nodo->derecho; */
-/*                } */
-/*             // Intercambiar valores de nodo a borrar y nodo encontrado y continuar, cerrando el bucle. El nodo encontrado no tiene por qué ser un nodo hoja. */
-/*             // cerrando el bucle nos aseguramos de que sólo se eliminan nodos hoja. */
-/*                 aux = actual->dato; */
-/*                 actual->dato = nodo->dato; */
-/*                 nodo->dato = aux; */
-/*                 actual = nodo; */
-/*                 cout << "\n\t\tHay intercambio."; */
-/*             } */
-/*          } */
-/*       } */
-/*       else { // Todavía no hemos encontrado el valor, seguir buscándolo */
-/*          padre = actual; */
-/*          if(dat > actual->dato) actual = actual->derecho; */
-/*          else if(dat < actual->dato) actual = actual->izquierdo; */
-/*       } */
-/*    } */
-/* } */
-
+   actual = raiz;
+   // Mientras sea posible que el valor esté en el árbol
+   while(!Vacio(actual)) {
+      if(dat == actual->dato.numero) { // Si el valor está en el nodo actual
+         if(EsHoja(actual)) { // Y si además es un nodo hoja: lo borramos
+            /* cout << "\n\t\tBorrado un nodo hoja,"; */
+            if(padre) {// Si tiene padre (no es el nodo raiz)
+               // Anulamos el puntero que le hace referencia
+               if(padre->derecho == actual) padre->derecho = NULL;
+               else if(padre->izquierdo == actual) padre->izquierdo = NULL;
+            }
+            else{
+                /* cout << " que ademas era raiz."; */
+                raiz=NULL;
+            }
+            delete actual; // Borrar el nodo
+            actual = NULL;
+            return;
+         }
+         else { // Si el valor está en el nodo actual, pero no es hoja
+            if (actual->derecho==NULL){ //sólo tiene hijo izquierdo.
+                /* cout << "\n\t\tBorrado un nodo lista izquierda,"; */
+                if (padre){ //Si tiene padre, me lo salto
+                        if(padre->izquierdo==actual)
+                            padre->izquierdo=actual->izquierdo;
+                        else
+                            padre->derecho=actual->izquierdo;
+                }
+                else{ //Si no tiene padre, su hijo izquierdo es el nuevo raiz;
+                    /* cout << " que ademas era raiz."; */
+                    raiz=actual->izquierdo;
+                }
+                delete actual;
+                actual=NULL;
+                return;
+            }
+            else  if (actual->izquierdo==NULL){ //sólo tiene hijo derecho.
+                /* cout << "\n\t\tBorrado un nodo lista derecha,"; */
+                if (padre){ //Si tiene padre, me lo salto
+                        if(padre->izquierdo==actual)
+                            padre->izquierdo=actual->derecho;
+                        else
+                            padre->derecho=actual->derecho;
+                }
+                else{ //Si no tiene padre, su hijo izquierdo es el nuevo raiz;
+                    /* cout << " que ademas era raiz."; */
+                    raiz=actual->derecho;
+                                    }
+                delete actual;
+                actual=NULL;
+                return;
+            }
+            else{ // Tiene dos hijos. Busco sustituto. Nodo más a la derecha de la rama izquierda
+               padre=actual;
+               nodo = actual->izquierdo;
+               while(nodo->derecho) {
+                  padre = nodo;
+                  nodo = nodo->derecho;
+               }
+            // Intercambiar valores de nodo a borrar y nodo encontrado y continuar, cerrando el bucle. El nodo encontrado no tiene por qué ser un nodo hoja.
+            // cerrando el bucle nos aseguramos de que sólo se eliminan nodos hoja.
+                aux = actual->dato.numero;
+                actual->dato = nodo->dato;
+                nodo->dato.numero = aux;
+                actual = nodo;
+                /* cout << "\n\t\tHay intercambio."; */
+            }
+         }
+      }
+      else { // Todavía no hemos encontrado el valor, seguir buscándolo
+         padre = actual;
+         if(dat> actual->dato.numero) actual = actual->derecho;
+         else if(dat< actual->dato.numero) actual = actual->izquierdo;
+      }
+   }
+}
 
 // Recorrido de árbol en inorden, aplicamos la función func, que tiene
 // el prototipo:
@@ -135,151 +134,109 @@ void Arbol::InOrden(void (*func)(concesionario&), Nodo *nodo, bool r)
    if(nodo->derecho) InOrden(func, nodo->derecho, false);
 }
 
-void Arbol::insertarVehiculosEnListaArbol(int num, Automovil coche, Nodo *nodo, bool r)
-{
-   if (Vacio(raiz)) return;
-   if(r) nodo = raiz;
-   if(nodo->izquierdo){
-        if(nodo->dato.numero == num){
-            nodo->dato.lista.insertarNodoAlInicio(coche);
+void Arbol::insertarVehiculosEnListaArbol(int num, Automovil coche){
+        actual = raiz;
+        // Todavía puede aparecer, ya que quedan nodos por mirar
+        while(!Vacio(actual)) {
+                if(num == actual->dato.numero){
+                        actual->dato.lista.insertarNodoAlInicio(coche);
+                        break;
+                }
+                else if(num > actual->dato.numero) actual = actual->derecho; // Seguir
+                else if(num < actual->dato.numero) actual = actual->izquierdo;
         }
-        insertarVehiculosEnListaArbol(num, coche, nodo->izquierdo, false);
-   }
-   if(nodo->derecho){
-        if(nodo->dato.numero == num){
-            nodo->dato.lista.insertarNodoAlInicio(coche);
-        }
-        insertarVehiculosEnListaArbol(num, coche, nodo->derecho, false);
-   }
 }
 
 void Arbol::insertarVehiculosEnListaArbol(char z, Automovil coche, Nodo *nodo, bool r)
 {
    if (Vacio(raiz)) return;
    if(r) nodo = raiz;
-   if(nodo->izquierdo){
-        if(nodo->dato.zona == z){
-            nodo->dato.lista.insertarNodoAlInicio(coche);
-        }
-        insertarVehiculosEnListaArbol(z, coche, nodo->izquierdo, false);
-   }
-   if(nodo->derecho){
-        if(nodo->dato.zona == z){
-            nodo->dato.lista.insertarNodoAlInicio(coche);
-        }
-        insertarVehiculosEnListaArbol(z, coche, nodo->derecho, false);
+   if(nodo->dato.zona == z){
+           nodo->dato.lista.insertarNodoAlInicio(coche);
+           return;
+   }else if(nodo->izquierdo){
+           insertarVehiculosEnListaArbol(z,coche,nodo->izquierdo, false);
+   }else if(nodo->derecho){
+           insertarVehiculosEnListaArbol(z,coche,nodo->derecho, false);
    }
 }
 
-void Arbol::mostrarVehiculosEnListaArbol(int num, Nodo *nodo, bool r, bool f)
+void Arbol::mostrarVehiculosEnListaArbol(int num, Nodo *nodo, bool r)
 {
-    if(f) return;
-   if (Vacio(raiz)) return;
-   if(r) nodo = raiz;
-   if(nodo->izquierdo && !f){
-        if(nodo->dato.numero == num){
-            nodo->dato.lista.mostrarLista();
-            mostrarVehiculosEnListaArbol(num, nodo->izquierdo, false, true);
-        }else{
-            mostrarVehiculosEnListaArbol(num, nodo->izquierdo, false, false);
+        nodo = raiz;
+        // busca el concesionario
+         while(!Vacio(actual)) {
+                if(num == actual->dato.numero){
+                        actual->dato.lista.mostrarLista();
+                        break;
+                }
+                else if(num > actual->dato.numero) actual = actual->derecho; // Seguir
+                else if(num < actual->dato.numero) actual = actual->izquierdo;
         }
-   }
-   if(nodo->derecho && !f){
-        if(nodo->dato.numero == num){
-            nodo->dato.lista.mostrarLista();
-            mostrarVehiculosEnListaArbol(num, nodo->izquierdo, false, true);
-        }else{
-            mostrarVehiculosEnListaArbol(num, nodo->derecho, false, false);
-        }
-    }
 }
 
-void Arbol::mostrarVehiculosEnListaArbol(char z, Nodo *nodo, bool r, bool f)
-{
-   if(f) return;
-   if (Vacio(raiz)) return;
-   if(r) nodo = raiz;
-   if(nodo->izquierdo && !f){
-        if(nodo->dato.zona == z){
-            nodo->dato.lista.mostrarLista();
-            mostrarVehiculosEnListaArbol(z, nodo->izquierdo, false, true);
-        }else{
-            mostrarVehiculosEnListaArbol(z, nodo->izquierdo, false, false);
+void Arbol::mostrarVehiculosEnListaArbol(char z, Nodo *nodo, bool r){
+        nodo = raiz;
+        // busca el concesionario
+         while(!Vacio(actual)) {
+                if(z == actual->dato.zona){
+                        actual->dato.lista.mostrarLista();
+                        break;
+                }
+                else if(actual->izquierdo) actual = actual->izquierdo;
+                else if(actual->derecho) actual = actual->derecho;
         }
-   }
-   if(nodo->derecho && !f){
-        if(nodo->dato.zona == z){
-            nodo->dato.lista.mostrarLista();
-            mostrarVehiculosEnListaArbol(z, nodo->izquierdo, false, true);
-        }else{
-            mostrarVehiculosEnListaArbol(z, nodo->derecho, false, false);
-        }
-    }
-}
-// Recorrido de árbol en preorden, aplicamos la función func, que tiene
-// el prototipo:
-// void func(int&);
-void Arbol::PreOrden(void (*func)(concesionario&), Nodo *nodo, bool r)
-{
-   if (Vacio(raiz)) return;
-   if(r) nodo = raiz;
-   func(nodo->dato);
-   if(nodo->izquierdo) PreOrden(func, nodo->izquierdo, false);
-   if(nodo->derecho) PreOrden(func, nodo->derecho, false);
-}
-
-// Recorrido de árbol en postorden, aplicamos la función func, que tiene
-// el prototipo:
-// void func(int&);
-void Arbol::PostOrden(void (*func)(concesionario&), Nodo *nodo, bool r)
-{
-   if (Vacio(raiz)) return;
-   if(r) nodo = raiz;
-   if(nodo->izquierdo) PostOrden(func, nodo->izquierdo, false);
-   if(nodo->derecho) PostOrden(func, nodo->derecho, false);
-   func(nodo->dato);
 }
 
 // Buscar un valor en el árbol
-/* bool Arbol::Buscar(const Automovil dat) */
-/* { */
-/*    actual = raiz; */
+bool Arbol::Buscar(const int numConcesionario)
+{
+        actual = raiz;
+        while(!Vacio(actual)) {
+                if(numConcesionario == actual->dato.numero) return true; // int encontrado
+                else if(numConcesionario > actual->dato.numero) actual = actual->derecho; // Seguir
+                else if(numConcesionario < actual->dato.numero) actual = actual->izquierdo;
+        }
+        return false; // No está en árbol
+}
 
-/*    // Todavía puede aparecer, ya que quedan nodos por mirar */
-/*    while(!Vacio(actual)) { */
-/*       if(dat == actual->dato) return true; // int encontrado */
-/*       else if(dat > actual->dato) actual = actual->derecho; // Seguir */
-/*       else if(dat < actual->dato) actual = actual->izquierdo; */
-/*    } */
-/*    return false; // No está en árbol */
-/* } */
+bool Arbol::Buscar(const char z){
+        actual = raiz;
+        while(!Vacio(actual)) {
+                if(z == actual->dato.zona) return true; // int encontrado
+                else if(actual->izquierdo) actual = actual->izquierdo;
+                else if(actual->derecho) actual = actual->derecho; // Seguir
+                /* break; */
+        }
+        return false; // No está en árbol
+}
 
 // Calcular la altura del nodo que contiene el int dat
-/* int Arbol::Altura(const Automovil dat) */
-/* { */
-/*    int altura = 0; */
-/*    actual = raiz; */
+int Arbol::Altura(const concesionario dat)
+{
+   int altura = 0;
+   actual = raiz;
 
-/*    // Todavía puede aparecer, ya que quedan nodos por mirar */
-/*    while(!Vacio(actual)) { */
-/*       if(dat == actual->dato) return altura; // int encontrado */
-/*       else { */
-/*          altura++; // Incrementamos la altura, seguimos buscando */
-/*          if(dat > actual->dato) actual = actual->derecho; */
-/*          else if(dat < actual->dato) actual = actual->izquierdo; */
-/*       } */
-/*    } */
-/*    return -1; // No está en árbol */
-/* } */
+   // Todavía puede aparecer, ya que quedan nodos por mirar
+   while(!Vacio(actual)) {
+      if(dat.numero == actual->dato.numero) return altura; // int encontrado
+      else {
+         altura++; // Incrementamos la altura, seguimos buscando
+         if(dat.numero > actual->dato.numero) actual = actual->derecho;
+         else if(dat.numero < actual->dato.numero) actual = actual->izquierdo;
+      }
+   }
+   return -1; // No está en árbol
+}
 
-/* // Contar el número de nodos */
-/* const int Arbol::NumeroNodos() */
-/* { */
-/*    contador = 0; */
+// Contar el número de nodos
+const int Arbol::NumeroNodos()
+{
+   contador = 0;
 
-/*    auxContador(raiz); // FUnción auxiliar */
-/*    return contador; */
-/* } */
+   auxContador(raiz); // FUnción auxiliar
+   return contador;
+}
 
 // Función auxiliar para contar nodos. Función recursiva de recorrido en
 //   preorden, el proceso es aumentar el contador

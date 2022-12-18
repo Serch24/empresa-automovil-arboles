@@ -13,7 +13,6 @@ int concesionario::concesionarioAleatorio(){
             for(int i=0; i < numerosDeConcesionarios.size();i++){
                     if(numRand == numerosDeConcesionarios[i]){
                             numerosDeConcesionarios.erase(numerosDeConcesionarios.begin() + i);
-                            /* cout << numRand << endl; */
                             return numRand;
                     }
             }

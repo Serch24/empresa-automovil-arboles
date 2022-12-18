@@ -9,6 +9,7 @@ class NodoLista
     private:
         Automovil valor;
         NodoLista *siguiente;
+        int cantidad;
         friend class Lista;
 
     public:
@@ -16,6 +17,7 @@ class NodoLista
         {
             valor = v;
             siguiente = sig;
+            cantidad = 0;
         }
 };
 typedef NodoLista *pnodoLista;
@@ -33,6 +35,7 @@ class Lista {
         void borrarNodo(Automovil);
         bool listaVacia();
         void mostrarLista();
+        int contarVehiculos();
         void esSiguiente();
         void esFinal();
         void esPrimero();

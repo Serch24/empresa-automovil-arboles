@@ -17,7 +17,6 @@ class concesionario
         int concesionarioAleatorio();
         char zonaAleatorioConcesionario();
         virtual ~concesionario();
-
 };
 
 void aaaa();

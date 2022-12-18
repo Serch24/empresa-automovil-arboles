@@ -35,9 +35,10 @@ class Arbol{
            void Insertar(const concesionario dat);
            void InsertarEnLista(Automovil coche);
            // Borrar un elemento del árbol:
-           void Borrar(const concesionario dat);
+           void Borrar(const int dat);
            // Función de búsqueda:
-           bool Buscar(const concesionario dat);
+           bool Buscar(const int numConcesionario);
+           bool Buscar(const char z);
            // Comprobar si el árbol está vacío:
            bool Vacio(Nodo *r) { return r==NULL; }
            // Comprobar si es un nodo hoja:
@@ -55,10 +56,10 @@ class Arbol{
            void InOrden(void (*func)(concesionario&) , Nodo *nodo=NULL, bool r=true);
            void PreOrden(void (*func)(concesionario&) , Nodo *nodo=NULL, bool r=true);
            void PostOrden(void (*func)(concesionario&) , Nodo *nodo=NULL, bool r=true);
-           void insertarVehiculosEnListaArbol(int num, Automovil coche, Nodo *nodo=NULL, bool r=true);
+           void insertarVehiculosEnListaArbol(int num, Automovil coche);
            void insertarVehiculosEnListaArbol(char num, Automovil coche, Nodo *nodo=NULL, bool r=true);
-           void mostrarVehiculosEnListaArbol(int num, Nodo *nodo=NULL, bool r=true, bool f=false);
-           void mostrarVehiculosEnListaArbol(char z, Nodo *nodo=NULL, bool r=true, bool f=false);
+           void mostrarVehiculosEnListaArbol(int num, Nodo *nodo=NULL, bool r=true);
+           void mostrarVehiculosEnListaArbol(char z, Nodo *nodo=NULL,bool r=true);
 
 
 

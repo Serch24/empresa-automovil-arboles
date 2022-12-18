@@ -75,7 +75,7 @@ void ListaDoble::ordenarLista(){
 }
 
 void ListaDoble::borrarVehiculos(string modelo){
-        if(!listaVacia())
+        if(!listaVacia()){
                 actual = cabeza;
                 while(actual){
                         pnodo aux;
@@ -106,6 +106,7 @@ void ListaDoble::borrarVehiculos(string modelo){
                             actual = actual->siguiente;
                         }
                 }
+        }
 }
 
 Automovil ListaDoble::sacarVehiculos(int numero){
@@ -159,15 +160,15 @@ Automovil ListaDoble::sacarVehiculos(char zona){
                         if(actual->valor.zona == zona){
                                 if(actual == cabeza && fin != actual){
                                     aux = cabeza;
+                                    automov = aux->valor;
                                     cabeza = cabeza->siguiente;
                                     cabeza->anterior = NULL;
-                                    automov = aux->valor;
                                     delete aux;
                                 }else if(actual == fin && actual != cabeza){
                                     aux = fin;
+                                    automov = aux->valor;
                                     fin = fin->anterior;
                                     fin->siguiente = NULL;
-                                    automov = aux->valor;
                                     delete aux;
                                  }else if(actual == fin && cabeza == actual){
                                      automov = actual->valor;
@@ -177,13 +178,12 @@ Automovil ListaDoble::sacarVehiculos(char zona){
                                      break;
                                  }else{
                                     aux = actual;
+                                    automov = aux->valor;
                                     actual->anterior->siguiente = actual->siguiente;
                                     actual->siguiente->anterior = actual->anterior;
-                                    automov = aux->valor;
                                     delete aux;
                                 }
-                                actual = actual->siguiente;
-                                return automov;
+                                break;
                         }else{
                             actual = actual->siguiente;
                         }
@@ -247,11 +247,3 @@ bool ListaDoble::esActual()
 {
     return actual != NULL;
 }
-
-/* int ListaDoble::valorActual() */
-/* { */
-/*     if (!listaVacia()) return actual->valor.modelo; */
-/*      else return 0; */
-/* } */
-
-
