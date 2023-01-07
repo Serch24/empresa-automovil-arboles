@@ -7,7 +7,7 @@
 #include <string.h>
 /* Código hecho por María y Serch (◠﹏◠)/
  * UAH - EPS
- * 2022
+ * 2022/2023
 */
 
 using namespace std;
@@ -18,10 +18,11 @@ void insertarVehiculosEnLista(int num){
         if(arbolito.Buscar(num)){
                 Automovil coche = devolverAuto(num);
                 while(coche.Nbastidor != ""){
-                        cout << "bastidor: " << coche.Nbastidor << "Zona: " << coche.zona << ", Modelo: " << coche.modelo << endl;
+                        //cout << "bastidor: " << coche.Nbastidor << "Zona: " << coche.zona << ", Modelo: " << coche.modelo << endl;
                         arbolito.insertarVehiculosEnListaArbol(num, coche);
                         coche = devolverAuto(num);
                 }
+		cout << "¡Vehiculos transportados!" << endl;
         }else{
                 cout << "no existe el concesionario" << endl;
         }
@@ -32,10 +33,11 @@ void insertarVehiculosEnLista(char z){
         if(arbolito.Buscar(z)){
                 Automovil coche = devolverAuto(z);
                 while(coche.Nbastidor != ""){
-                        cout << "bastidor: " << coche.Nbastidor << "Zona: " << coche.zona << ", Modelo: " << coche.modelo << endl;
+                        //cout << "bastidor: " << coche.Nbastidor << "Zona: " << coche.zona << ", Modelo: " << coche.modelo << endl;
                         arbolito.insertarVehiculosEnListaArbol(z, coche);
                         coche = devolverAuto(z);
                 }
+		cout << "¡Vehiculos transportados!" << endl;
         }else{
                 cout << "no existe el concesionario" << endl;
         }
@@ -122,7 +124,6 @@ int main(){
                         case 7:
                             cout << "Introduce la zona: " <<endl;
                             cin >> z;
-                            z = z - 32;
                             insertarVehiculosEnLista(z);
                                 break;
                         case 8:
@@ -133,7 +134,6 @@ int main(){
                         case 9:
                             cout << "Introduce la zona: " <<endl;
                             cin >> z;
-                            z = z - 32;
                             arbolito.mostrarVehiculosEnListaArbol(z);
                                 break;
                         case 10:

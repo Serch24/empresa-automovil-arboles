@@ -1,4 +1,6 @@
 #include "listas.h"
+#include <iomanip>
+#include <string.h>
 
 using namespace std;
 
@@ -44,6 +46,23 @@ void Lista::insertarNodoAlFinal(Automovil v) {
     }
 }
 
+void Lista::ordenarBastidor(){
+	pnodoLista aux;
+	bool cambiado;
+	do{
+		cambiado = false;
+		actual = cabeza;
+		while(actual->siguiente){
+			if (strcmp(actual->valor.Nbastidor.c_str(), actual->siguiente->valor.Nbastidor.c_str()) > 0){
+				cambiado = true;
+				swap(actual->valor, actual->siguiente->valor);
+			}
+			actual = actual->siguiente;
+		}
+		aux = actual;
+	}while(cambiado);
+}
+
 void Lista::borrarNodo(Automovil v) {
     pnodoLista anterior;
 
@@ -84,16 +103,18 @@ int Lista::contarVehiculos(){
 
 void Lista::mostrarLista()
 {
-    //Nodo *aux;
-    pnodoLista aux;
-    aux = cabeza;
+	ordenarBastidor();
+	//Nodo *aux;
+	pnodoLista aux;
+	aux = cabeza;
 
-    while(aux)
-    {
-        cout << "Bastidor: " << aux->valor.Nbastidor << ", Modelo: "<<  aux->valor.modelo << ", color: " << aux->valor.color << ", Concesionario :" << aux->valor.concesionario <<", zona: " << aux->valor.zona << endl;
-        aux = aux->siguiente;
-    }
-    cout << endl;
+	cout << " | "     <<setw(8) << "modelo"          << " | " << "Bastidor"                       << " | " << setw(7)<< "color"          << " | "  << setw(6) << "zona"          << " | " << "concesionario"<< " |" << endl;
+	cout << " ----------------------------------------------------------" << endl;
+        while(aux) {
+            cout << " | " << setw(8) << aux->valor.modelo << " | " << aux->valor.Nbastidor << setw(4) << " | " <<setw(7) << aux->valor.color << " | " << setw(6) << aux->valor.zona  << " | " << setw(13) <<aux->valor.concesionario <<  " | "  << endl;
+	    cout << "" << endl;
+            aux = aux->siguiente;
+        }
 }
 
 void Lista::esSiguiente()

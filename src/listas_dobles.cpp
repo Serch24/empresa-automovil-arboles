@@ -192,30 +192,17 @@ Automovil ListaDoble::sacarVehiculos(char zona){
         return automov;
 }
 
-void ListaDoble::mostrarLista(int orden)
-{
-    pnodo aux;
-
-    if (orden == ASCENDENTE) {
+void ListaDoble::mostrarLista(){
+	pnodo aux;
         esPrimero();
         aux = cabeza;
-        cout << " | " << "modelo" << " | " << "Bastidor" << " | " << "color" << " | " << "zona" << " | " << "concesionario" << endl;
+        cout << " | "     <<setw(8) << "modelo"          << " | " << "Bastidor"                       << " | " << setw(7)<< "color"          << " | "  << setw(6) << "zona"          << " | " << "concesionario"<< " |" << endl;
+	cout << " ----------------------------------------------------------" << endl;
         while(aux) {
-            cout << "" << endl;
-            cout << " | " << aux->valor.modelo << setw(5) << " | " << aux->valor.Nbastidor << setw(4) << " | " << aux->valor.color << " | " << aux->valor.zona << setw(7) << " | " << aux->valor.concesionario << setw(12) << " | "  << endl;
+            cout << " | " << setw(8) << aux->valor.modelo << " | " << aux->valor.Nbastidor << setw(4) << " | " <<setw(7) << aux->valor.color << " | " << setw(6) << aux->valor.zona  << " | " << setw(13) <<aux->valor.concesionario <<  " | "  << endl;
+	    cout << "" << endl;
             aux = aux->siguiente;
         }
-    }
-    else {
-        esUltimo();
-        aux = fin;
-        cout << " | " << "modelo" << " | " << "Bastidor" << " | " << "color" << " | " << "zona" << " | " << "concesionario" << endl;
-        while(aux) {
-            cout << "" << endl;
-            cout << " | " << aux->valor.modelo << setw(5) << " | " << aux->valor.Nbastidor << setw(4) << " | " << aux->valor.color << " | " << aux->valor.zona << setw(7) << " | " << aux->valor.concesionario << setw(12) << " | "  << endl;
-            aux = aux->anterior;
-        }
-    }
 }
 
 bool ListaDoble::listaVacia()

@@ -6,10 +6,12 @@
 #include <iostream>
 #include <ctime>
 #include <string>
+#include <vector>
 
 using namespace std;
 ListaDoble almacen;
 int cantidadCoches = 16;
+vector<int> numConsesionarios= {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
 
 string bastidorAleatorio(){     //genera bastidor aleatorio
     string numBastidor;
@@ -60,19 +62,32 @@ char zonaAleatorio(){
 }
 
 int concesionarioAleatorio_numero(){
-        int numRand = 1 + rand() % (16 + 1 - 1); // 5
+	int numRand=-1;
+	while(numConsesionarios.size() > 0){
+		numRand = 1 + rand() % (16 + 1 - 1);
+		for(int i=0; i < numConsesionarios.size();i++){
+			if(numRand == numConsesionarios[i]){
+				numConsesionarios.erase(numConsesionarios.begin() + i);
+				return numRand;
+			}
+		}
+	}
         return numRand;
 }
 
 void generarNAutomoviles(int cantidad){
         for(int i = 0; i < cantidad; i++){
-                Automovil autoM;
-                autoM.color = colorAleatorio();
-                autoM.modelo = modeloAleatorio();
-                autoM.Nbastidor = bastidorAleatorio();
-                autoM.zona = zonaAleatorio();
-                autoM.concesionario = concesionarioAleatorio_numero();
-                almacen.insertarNodo(autoM);
+		if(numConsesionarios.size() > 0){
+			Automovil autoM;
+			autoM.color = colorAleatorio();
+			autoM.modelo = modeloAleatorio();
+			autoM.Nbastidor = bastidorAleatorio();
+			autoM.zona = zonaAleatorio();
+			autoM.concesionario = concesionarioAleatorio_numero();
+			almacen.insertarNodo(autoM);
+		}else{
+			cout << "no hay " << numConsesionarios.size()<< endl;
+		}
         }
 }
 
@@ -81,7 +96,7 @@ void ordenar(){
 }
 
 void mostrarAlmacen(){
-        almacen.mostrarLista(0);
+        almacen.mostrarLista();
 }
 
 Automovil devolverAuto(int numero){
@@ -94,6 +109,10 @@ Automovil devolverAuto(char zona){
 
 void vaciarAlmacen(){
         almacen.vaciar();
+	numConsesionarios.clear();
+	for(int i = 0; i < 16; i++){
+		numConsesionarios.push_back(i+1);
+	}
 }
 
 void borrarModelo(string m){

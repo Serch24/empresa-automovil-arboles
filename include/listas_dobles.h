@@ -38,7 +38,7 @@ class ListaDoble
         void ordenarLista();
         void borrarVehiculos(string modelo);
         bool listaVacia();
-        void mostrarLista(int);
+        void mostrarLista();
         void esSiguiente();
         void esAnterior();
         void esPrimero();

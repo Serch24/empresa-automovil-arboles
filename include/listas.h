@@ -41,6 +41,7 @@ class Lista {
         void esPrimero();
         void esUltimo();
         bool esActual();
+	void ordenarBastidor();
         Automovil valorActual();
 
     private:
