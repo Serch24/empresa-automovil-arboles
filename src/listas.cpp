@@ -103,18 +103,17 @@ int Lista::contarVehiculos(){
 
 void Lista::mostrarLista()
 {
-	ordenarBastidor();
-	//Nodo *aux;
-	pnodoLista aux;
-	aux = cabeza;
-
-	cout << " | "     <<setw(8) << "modelo"          << " | " << "Bastidor"                       << " | " << setw(7)<< "color"          << " | "  << setw(6) << "zona"          << " | " << "concesionario"<< " |" << endl;
-	cout << " ----------------------------------------------------------" << endl;
-        while(aux) {
-            cout << " | " << setw(8) << aux->valor.modelo << " | " << aux->valor.Nbastidor << setw(4) << " | " <<setw(7) << aux->valor.color << " | " << setw(6) << aux->valor.zona  << " | " << setw(13) <<aux->valor.concesionario <<  " | "  << endl;
-	    cout << "" << endl;
-            aux = aux->siguiente;
-        }
+	if(!listaVacia()){
+		ordenarBastidor();
+		pnodoLista aux = cabeza;
+		cout << " | "     <<setw(8) << "modelo"          << " | " << "Bastidor"                       << " | " << setw(7)<< "color"          << " | "  << setw(6) << "zona"          << " | " << "concesionario"<< " |" << endl;
+		cout << " ----------------------------------------------------------" << endl;
+		while(aux) {
+		    cout << " | " << setw(8) << aux->valor.modelo << " | " << aux->valor.Nbastidor << setw(4) << " | " <<setw(7) << aux->valor.color << " | " << setw(6) << aux->valor.zona  << " | " << setw(13) <<aux->valor.concesionario <<  " | "  << endl;
+		    cout << "" << endl;
+		    aux = aux->siguiente;
+		}
+	}
 }
 
 void Lista::esSiguiente()

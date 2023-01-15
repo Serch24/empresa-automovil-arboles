@@ -1,6 +1,8 @@
 #include "arbol.h"
 #include "automovil.h"
 #include "concesionario.h"
+#include <algorithm>
+#include <stdio.h>
 
 // Poda: borrar todos los nodos a partir de uno, incluido
 void Arbol::Podar(Nodo* &nodo)
@@ -14,30 +16,125 @@ void Arbol::Podar(Nodo* &nodo)
    }
 }
 
-// Insertar un int en el árbol ABB
+// Insertar un concesionario en el árbol ABB
 void Arbol::Insertar(const concesionario dat){
-    Nodo *padre = NULL;
+	Nodo *padre = NULL;
 
-    actual = raiz;
-    // Buscar el int en el árbol, manteniendo un puntero al nodo padre
-    while(!Vacio(actual) && dat.numero != actual->dato.numero) {
-       padre = actual;
-       if(dat.numero > actual->dato.numero) actual = actual->derecho;
-       else if(dat.numero < actual->dato.numero) actual = actual->izquierdo;
-    }
+	actual = raiz;
+	// Buscar el int en el árbol, manteniendo un puntero al nodo padre
+	while(!Vacio(actual) && dat.numero != actual->dato.numero) {
+		padre = actual;
+		if(dat.numero > actual->dato.numero) actual = actual->derecho;
+		else if(dat.numero < actual->dato.numero) actual = actual->izquierdo;
+	}
 
-    // Si se ha encontrado el elemento, regresar sin insertar
-    if(!Vacio(actual)) return;
-    // Si padre es NULL, entonces el árbol estaba vacío, el nuevo nodo será
-    // el nodo raiz
-    if(Vacio(padre)) raiz = new Nodo(dat);
-    // Si el int es menor que el que contiene el nodo padre, lo insertamos
-    // en la rama izquierda
-    else if(dat.numero < padre->dato.numero) padre->izquierdo = new Nodo(dat);
-    // Si el int es mayor que el que contiene el nodo padre, lo insertamos
-    // en la rama derecha
-    else if(dat.numero > padre->dato.numero) padre->derecho = new Nodo(dat);
- }
+	// Si se ha encontrado el elemento, regresar sin insertar
+	if(!Vacio(actual)) return;
+	// Si padre es NULL, entonces el árbol estaba vacío, el nuevo nodo será
+	// el nodo raiz
+	if(Vacio(padre)){
+		raiz = new Nodo(dat);
+	}else if(dat.numero < padre->dato.numero){
+	       	padre->izquierdo = new Nodo(dat);
+	}else if(dat.numero > padre->dato.numero){
+	       	padre->derecho = new Nodo(dat);
+	}
+
+	//actualizarAltura(raiz);
+}
+
+void Arbol::actualizarAltura(Nodo *abb){
+	if(Vacio(abb)) return;
+	altura = 1 + max(alturaDeNodo(abb->izquierdo), alturaDeNodo(abb->derecho));
+	balancear(abb);
+	actualizarAltura(abb->izquierdo);
+	actualizarAltura(abb->derecho);
+}
+
+/*void Arbol::Insertar(concesionario dat, Nodo *abb, bool r){
+	if(Vacio(raiz)){
+		raiz = new Nodo(dat);
+		return;
+	}
+	if(r) abb = raiz;
+	if(Vacio(abb)){
+		abb = new Nodo(dat);
+		cout << "pasa" << endl;
+		return;
+	}
+	if(dat.numero < abb->dato.numero){
+		Insertar(dat, abb->izquierdo, false);
+	}else if(dat.numero > abb->dato.numero){
+		Insertar(dat, abb->derecho, false);
+	}else{
+		return;
+	}
+
+	raiz = abb;
+	//balancear();
+}*/
+
+void Arbol::rotacionSimple(Nodo *abb, bool giroIzq){
+	Nodo *aux;
+	if(giroIzq){
+		aux = abb->derecho;
+		abb->derecho = aux->izquierdo;
+		aux->izquierdo = abb;
+	}else{
+		aux = abb->izquierdo;
+		abb->izquierdo = aux->derecho;
+		aux->derecho = abb;
+	}
+	abb = aux;
+}
+
+void Arbol::rotacionDoble(bool giroIzq){
+	if(giroIzq){
+		rotacionSimple(raiz->derecho, false);
+		rotacionSimple(raiz, true);
+	}else{
+		rotacionSimple(raiz->izquierdo, true);
+		rotacionSimple(raiz, false);
+	}
+}
+
+/*void Arbol::balancear(){
+	if(raiz != NULL){
+		if((alturaDeNodo(raiz->derecho) - alturaDeNodo(raiz->izquierdo)) == -2){
+			if(alturaDeNodo(raiz->izquierdo->izquierdo) >= alturaDeNodo(raiz->izquierdo->derecho)){
+				rotacionSimple(raiz, true);
+			}else{
+				rotacionDoble(true);
+			}
+		}else{
+			if((alturaDeNodo(raiz->derecho) - alturaDeNodo(raiz->izquierdo)) == 2){
+				if(alturaDeNodo(raiz->derecho->derecho) >= alturaDeNodo(raiz->derecho->izquierdo)){
+					rotacionSimple(raiz, false);
+				}else{
+					rotacionDoble(false);
+				}
+			}
+		}
+	}
+}
+*/
+
+void Arbol::balancear(Nodo *abb){
+	if(Vacio(abb)) return;
+	if(alturaDeNodo(abb->izquierdo) - alturaDeNodo(abb->derecho) > 1){
+		if(alturaDeNodo(abb->izquierdo->izquierdo) - alturaDeNodo(abb->izquierdo->derecho) >= 0){
+			rotacionSimple(abb, false);
+		}else{
+			rotacionDoble(false);
+		}
+	}else if(alturaDeNodo(abb->izquierdo) - alturaDeNodo(abb->derecho) < -1){
+		if(alturaDeNodo(abb->derecho->izquierdo) - alturaDeNodo(abb->derecho->derecho) <= 0){
+			rotacionSimple(abb, true);
+		}else{
+			rotacionDoble(true);
+		}
+	}
+}
 
 void Arbol::Borrar(const int dat)
 {
@@ -134,6 +231,14 @@ void Arbol::InOrden(void (*func)(concesionario&), Nodo *nodo, bool r)
    if(nodo->derecho) InOrden(func, nodo->derecho, false);
 }
 
+void Arbol::PreOrden(void (*func)(concesionario&), Nodo *nodo, bool r){
+	if (Vacio(raiz)) return;
+	if(r) nodo = raiz;
+	func(nodo->dato);
+	if(nodo->izquierdo) InOrden(func, nodo->izquierdo, false);
+	if(nodo->derecho) InOrden(func, nodo->derecho, false);
+}
+
 void Arbol::insertarVehiculosEnListaArbol(int num, Automovil coche){
         actual = raiz;
         // Todavía puede aparecer, ya que quedan nodos por mirar
@@ -147,23 +252,25 @@ void Arbol::insertarVehiculosEnListaArbol(int num, Automovil coche){
         }
 }
 
-void Arbol::insertarVehiculosEnListaArbol(char z, Automovil coche, Nodo *nodo, bool r)
-{
-   if (Vacio(raiz)) return;
-   if(r) nodo = raiz;
-   if(nodo->dato.zona == z){
-           nodo->dato.lista.insertarNodoAlInicio(coche);
-           return;
-   }else if(nodo->izquierdo){
-           insertarVehiculosEnListaArbol(z,coche,nodo->izquierdo, false);
-   }else if(nodo->derecho){
-           insertarVehiculosEnListaArbol(z,coche,nodo->derecho, false);
-   }
+bool Arbol::insertarVehiculosEnListaArbol(char z, Automovil coche, Nodo *nodo, bool r){
+	bool found = false;
+	if (Vacio(raiz)) return false;
+	if(r) nodo = raiz;
+	if(Vacio(nodo)) return false;
+	if(nodo->dato.zona == z){
+		cout << "Insertando coche... " << coche.Nbastidor << endl;
+		nodo->dato.lista.insertarNodoAlInicio(coche);
+		return true;
+	}
+	bool izq = insertarVehiculosEnListaArbol(z, coche, nodo->izquierdo, false);
+	if(izq) return true;
+	bool der = insertarVehiculosEnListaArbol(z, coche, nodo->derecho, false);
+	return der;
 }
 
 void Arbol::mostrarVehiculosEnListaArbol(int num, Nodo *nodo, bool r)
 {
-        nodo = raiz;
+        actual = raiz;
         // busca el concesionario
          while(!Vacio(actual)) {
                 if(num == actual->dato.numero){
@@ -175,17 +282,14 @@ void Arbol::mostrarVehiculosEnListaArbol(int num, Nodo *nodo, bool r)
         }
 }
 
-void Arbol::mostrarVehiculosEnListaArbol(char z, Nodo *nodo, bool r){
-        nodo = raiz;
-        // busca el concesionario
-         while(!Vacio(actual)) {
-                if(z == actual->dato.zona){
-                        actual->dato.lista.mostrarLista();
-                        break;
-                }
-                else if(actual->izquierdo) actual = actual->izquierdo;
-                else if(actual->derecho) actual = actual->derecho;
-        }
+void Arbol::mostrarVehiculosEnListaArbol(char z, Nodo *abb, bool b){
+	if(Vacio(raiz)) return;
+	if(b) abb = raiz;
+	if(abb->izquierdo) mostrarVehiculosEnListaArbol(z, abb->izquierdo, false);
+	if(z == abb->dato.zona){
+		abb->dato.lista.mostrarLista();
+	}
+	if(abb->derecho) mostrarVehiculosEnListaArbol(z, abb->derecho, false);
 }
 
 // Buscar un valor en el árbol
@@ -200,15 +304,12 @@ bool Arbol::Buscar(const int numConcesionario)
         return false; // No está en árbol
 }
 
-bool Arbol::Buscar(const char z){
-        actual = raiz;
-        while(!Vacio(actual)) {
-                if(z == actual->dato.zona) return true; // int encontrado
-                else if(actual->izquierdo) actual = actual->izquierdo;
-                else if(actual->derecho) actual = actual->derecho; // Seguir
-                /* break; */
-        }
-        return false; // No está en árbol
+bool Arbol::Buscar(char z, Nodo *abb, bool b){
+	if(Vacio(raiz)) return false;
+	if(b) abb= raiz;
+	if(Vacio(abb)) return false;
+	//cout << abb->dato.zona << endl;
+	return (z == abb->dato.zona) || Buscar(z, abb->izquierdo, false) || Buscar(z, abb->derecho, false);
 }
 
 // Calcular la altura del nodo que contiene el int dat
@@ -226,7 +327,34 @@ int Arbol::Altura(const concesionario dat)
          else if(dat.numero < actual->dato.numero) actual = actual->izquierdo;
       }
    }
-   return -1; // No está en árbol
+   return 0; // No está en árbol
+}
+
+/*int Arbol::alturaDeNodo(Nodo *a){
+	if(!Vacio(a)){
+		if(Vacio(a->izquierdo)){
+			if(Vacio(a->derecho)){
+				return 0;
+			}else{
+				return 1 + alturaDeNodo(a->derecho);
+			}
+		}else{
+			if(Vacio(a->derecho)){
+				return 1 + alturaDeNodo(a->izquierdo);
+			}else{
+				return 1 + max(alturaDeNodo(a->izquierdo), alturaDeNodo(a->derecho));
+			}
+		}
+	}
+	return 0;
+}
+*/
+
+int Arbol::alturaDeNodo(Nodo *a) {
+  if (a == NULL) {
+    return 0;
+  }
+  return 1 + max(alturaDeNodo(a->izquierdo), alturaDeNodo(a->derecho));
 }
 
 // Contar el número de nodos

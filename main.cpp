@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <stdlib.h>
 #include <string.h>
+
 /* Código hecho por María y Serch (◠﹏◠)/
  * UAH - EPS
  * 2022/2023
@@ -33,7 +34,7 @@ void insertarVehiculosEnLista(char z){
         if(arbolito.Buscar(z)){
                 Automovil coche = devolverAuto(z);
                 while(coche.Nbastidor != ""){
-                        //cout << "bastidor: " << coche.Nbastidor << "Zona: " << coche.zona << ", Modelo: " << coche.modelo << endl;
+                        //cout << "bastidor: " << coche.Nbastidor << ", Zona: " << coche.zona << ", Modelo: " << coche.modelo << endl;
                         arbolito.insertarVehiculosEnListaArbol(z, coche);
                         coche = devolverAuto(z);
                 }
@@ -96,6 +97,7 @@ int main(){
                 switch(opcion){
                         case 1:
                                 arbolito.InOrden(mostrar);
+				cout << " " << endl;
                                 cout << "Altura del arbol: " << arbolito.AlturaArbol() << endl;
                                 cout << "Numero de nodos: " << arbolito.NumeroNodos() << endl;
                                 break;
@@ -146,6 +148,3 @@ int main(){
 
         return 0;
 }
-
-
-

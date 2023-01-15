@@ -33,12 +33,13 @@ class Arbol{
            ~Arbol() { Podar(raiz); }
            // Insertar en árbol ordenado:
            void Insertar(const concesionario dat);
+           //void Insertar(concesionario dat, Nodo *abb=NULL, bool=true);
            void InsertarEnLista(Automovil coche);
            // Borrar un elemento del árbol:
            void Borrar(const int dat);
            // Función de búsqueda:
            bool Buscar(const int numConcesionario);
-           bool Buscar(const char z);
+           bool Buscar(char z, Nodo *abb = NULL, bool b=true);
            // Comprobar si el árbol está vacío:
            bool Vacio(Nodo *r) { return r==NULL; }
            // Comprobar si es un nodo hoja:
@@ -57,11 +58,14 @@ class Arbol{
            void PreOrden(void (*func)(concesionario&) , Nodo *nodo=NULL, bool r=true);
            void PostOrden(void (*func)(concesionario&) , Nodo *nodo=NULL, bool r=true);
            void insertarVehiculosEnListaArbol(int num, Automovil coche);
-           void insertarVehiculosEnListaArbol(char num, Automovil coche, Nodo *nodo=NULL, bool r=true);
+           bool insertarVehiculosEnListaArbol(char num, Automovil coche, Nodo *nodo=NULL, bool r=true);
            void mostrarVehiculosEnListaArbol(int num, Nodo *nodo=NULL, bool r=true);
-           void mostrarVehiculosEnListaArbol(char z, Nodo *nodo=NULL,bool r=true);
-
-
+           void mostrarVehiculosEnListaArbol(char z, Nodo *abb=NULL,bool r=true);
+	   void rotacionSimple(Nodo *abb, bool b);
+	   void rotacionDoble(bool b);
+	   void balancear(Nodo *abb);
+	   int alturaDeNodo(Nodo *nodo);
+	   void actualizarAltura(Nodo *abb);
 
           private:
            // Funciones auxiliares
