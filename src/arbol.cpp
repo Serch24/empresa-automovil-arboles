@@ -136,6 +136,7 @@ void Arbol::InOrden(void (*func)(concesionario&), Nodo *nodo, bool r)
 
 void Arbol::insertarVehiculosEnListaArbol(int num, Automovil coche){
         actual = raiz;
+
         // Todavía puede aparecer, ya que quedan nodos por mirar
         while(!Vacio(actual)) {
                 if(num == actual->dato.numero){

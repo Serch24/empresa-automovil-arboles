@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <stdlib.h>
 #include <string.h>
+
 /* Código hecho por María y Serch (◠﹏◠)/
  * UAH - EPS
  * 2022/2023
@@ -13,7 +14,7 @@
 using namespace std;
 Arbol arbolito;
 
-//Insertar por número de concesionario 
+//Insertar por número de concesionario
 void insertarVehiculosEnLista(int num){
         if(arbolito.Buscar(num)){
                 Automovil coche = devolverAuto(num);
@@ -44,7 +45,7 @@ void insertarVehiculosEnLista(char z){
 }
 
 void mostrar(concesionario &a){
-        cout << "Concesionario: " << a.numero << ", zona: " << a.zona << ", Cantidad de vehiculos: " << a.lista.contarVehiculos() << endl; 
+        cout << "Concesionario: " << a.numero << ", zona: " << a.zona << ", Cantidad de vehiculos: " << a.lista.contarVehiculos() << endl;
 }
 
 void mostrarMenuPrincipal(){
@@ -91,7 +92,7 @@ int main(){
                 #if defined(__linux__)
                         system("clear");
                 #else
-                        system("cls");
+                        //system("cls");
                 #endif
                 switch(opcion){
                         case 1:

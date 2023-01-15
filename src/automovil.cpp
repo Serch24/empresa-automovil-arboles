@@ -7,11 +7,21 @@
 #include <ctime>
 #include <string>
 #include <vector>
+//#include <map>
 
 using namespace std;
 ListaDoble almacen;
+concesionario conces;
+
 int cantidadCoches = 16;
 vector<int> numConsesionarios= {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
+
+/*map<string, int> zonas["A"];
+zonas["A"] = "hola";
+zonas["B"] = {};
+zonas["C"] = {};
+zonas["D"] = {};*/
+
 
 string bastidorAleatorio(){     //genera bastidor aleatorio
     string numBastidor;
@@ -74,6 +84,18 @@ int concesionarioAleatorio_numero(){
 	}
         return numRand;
 }
+/*string asignarZona(){
+
+    for (size_t i = 0; i < zonas.size(); i++){
+        string zonaActual = zonas[i];
+        if (conces.zona == zonaActual){
+            mapa[zonaActual] = conces.numero;
+        }
+        else{
+            mapa[zonaActual]++;
+        }
+    }
+}*/
 
 void generarNAutomoviles(int cantidad){
         for(int i = 0; i < cantidad; i++){
@@ -82,8 +104,14 @@ void generarNAutomoviles(int cantidad){
 			autoM.color = colorAleatorio();
 			autoM.modelo = modeloAleatorio();
 			autoM.Nbastidor = bastidorAleatorio();
-			autoM.zona = zonaAleatorio();
-			autoM.concesionario = concesionarioAleatorio_numero();
+            autoM.concesionario = concesionarioAleatorio_numero();
+            autoM.zona = zonaAleatorio();
+
+            /*if (arbolito.Buscar(autoM.concesionario)){
+                cout <<"LLEGO AQUI" << endl;
+                autoM.zona = conces.zona;
+            }*/
+
 			almacen.insertarNodo(autoM);
 		}else{
 			cout << "no hay " << numConsesionarios.size()<< endl;
